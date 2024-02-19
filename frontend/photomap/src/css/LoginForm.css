@@ -1,0 +1,72 @@
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .modal-content {
+    background-color: #383c4a; /* темно-серый цвет фона */
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #9c27b0; /* фиолетовый цвет рамки */
+    width: 60%; /* Уменьшаем ширину до 60% от ширины экрана */
+    max-width: 400px; /* Ограничиваем максимальную ширину формы */
+    border-radius: 10px; /* скругление углов */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* тень */
+}
+
+input[type="text"],
+input[type="password"] {
+    width: calc(100% - 20px); /* Уменьшаем ширину поля ввода на величину паддинга */
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #9c27b0;
+    border-radius: 5px;
+    background-color: #555; /* серый цвет */
+    color: #fff; /* белый цвет текста ввода */
+}
+
+  
+  
+  .close {
+    color: #fff; /* белый цвет */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #ccc; /* серый цвет при наведении */
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  label {
+    color: #fff; /* белый цвет текста меток */
+  }
+  
+
+  button[type="submit"] {
+    background-color: transparent;
+    color: #9c27b0; /* фиолетовый цвет текста кнопки */
+    border: 2px solid #9c27b0; /* фиолетовый цвет рамки кнопки */
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* плавное изменение цвета при наведении */
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #9c27b0; /* фиолетовый цвет при наведении */
+    color: #fff; /* белый цвет текста при наведении */
+  }
+  

@@ -1,0 +1,113 @@
+﻿@using NetSchool.Web.Pages.Points.Models
+@using NetSchool.Web.Pages.Points.Services
+@inherits MudComponentBase
+
+@inject IPointService PointService
+
+<MudDialog>
+    <DialogContent>
+        <MudForm Model="Model" @ref="form">
+            <MudGrid>
+                <MudItem xs="12" sm="6">
+                    <MudTextField Label="Title" @bind-Value="Model.Title"
+                                  For="@(() => Model.Title)"
+                                  Required="true"
+                                  RequiredError="Title is required!">
+                    </MudTextField>
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudSelect @ref="selectPointCategory" T="Guid" Label="PointCategory" @bind-Value="Model.PointCategoryId" For="@(() => Model.PointCategoryId)">
+                        <MudSelectItem T="Guid" Value="Guid.Empty">&nbsp;</MudSelectItem>
+                        @foreach (var pointCategory in PointCategories)
+                        {
+                            <MudSelectItem T="Guid" Value="@pointCategory.Id">@pointCategory.Title</MudSelectItem>
+                        }
+                    </MudSelect>
+                </MudItem>
+                <MudItem xs="12">
+                    <MudTextField Label="Description"
+                                  Lines="5"
+                                  For="@(() => Model.Description)"
+                                  @bind-Value="Model.Description">
+                    </MudTextField>
+                </MudItem>
+
+                <MudItem xs="12">
+                    <MudFileInput Label="Upload Image" Accept="image/*" 
+                                   />
+                </MudItem>
+
+                <MudItem xs="12" sm="6">
+                    <MudTextField Label="Latitude"
+                                  Lines="5"
+                                  For="@(() => Model.Latitude)"
+                                  @bind-Value="Model.Latitude">
+                    </MudTextField>
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudTextField Label="Longitude"
+                                  Lines="5"
+                                  For="@(() => Model.Longitude)"
+                                  @bind-Value="Model.Longitude">
+                    </MudTextField>
+                </MudItem>
+            </MudGrid>
+        </MudForm>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="MudBlazor.Color.Primary" OnClick="Submit">Ok</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; } = default!;
+
+    [Parameter] public Guid? PointId { get; set; }
+
+    [Parameter] public PointModel Model { get; set; } = new();
+
+    [Parameter] public double Latitude { get; set; }
+    [Parameter] public double Longitude { get; set; }
+
+    private MudForm form = default!;
+
+    MudSelect<Guid> selectPointCategory = default!;
+    private List<PointCategoryModel> PointCategories { get; set; } = new List<PointCategoryModel>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var pointCategories = await PointService.GetPointCategoryList();
+        PointCategories.AddRange(pointCategories);
+
+        if (Latitude != 0 && Longitude != 0)
+        {
+            Model.Latitude = Latitude;
+            Model.Longitude = Longitude;
+        }
+
+
+        if (PointId != null)
+        {
+            var point = await PointService.GetPoint(PointId.Value);
+
+            Model.Id = point.Id;
+            Model.PointCategoryId = point.PointCategoryId;
+            Model.Title = point.Title;
+            Model.Latitude = point.Latitude;
+            Model.Longitude = point.Longitude;
+            Model.Description = point.Description;
+        }
+    }
+
+    async Task Submit()
+    {
+        await form.Validate();
+        if (form.IsValid)
+        {
+            MudDialog.Close(DialogResult.Ok(true));
+        }
+    }
+
+    void Cancel() => MudDialog.Cancel();
+}

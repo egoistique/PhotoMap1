@@ -1,0 +1,153 @@
+﻿@page "/points"
+@using NetSchool.Web.Pages.Points.Services
+@using NetSchool.Web.Pages.Points.Models
+@using NetSchool.Web.Components
+@using Microsoft.AspNetCore.Authorization
+@inject IPointService PointService
+@inject ISnackbar Snackbar
+@inject IDialogService DialogService
+
+@attribute [Authorize]
+@layout MainLayout
+
+<PageTitle>Points</PageTitle>
+
+<MudText Typo="Typo.h4" Class="ma-8">Points</MudText>
+
+<MudTable Items="@points" Class="ma-8">
+    <ColGroup>
+        <col style="width:50px;" />
+        <col />
+        <col />
+        <col />
+        <col style="width:100px;" />
+    </ColGroup>
+    <ToolBarContent>
+        <MudButton StartIcon="@Icons.Material.Filled.Add" Variant="Variant.Filled" Color="Color.Primary" OnClick="AddPoint">Add</MudButton>
+        <MudSpacer />
+        <MudTextField @bind-Value="searchString" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium"></MudTextField>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh>Id</MudTh>
+        <MudTh>Title</MudTh>
+        <MudTh>PointCategory</MudTh>
+        <MudTh>Feedbacks</MudTh>
+        <MudTh>Description</MudTh>
+        <MudTh>Latitude</MudTh>
+        <MudTh>Longitude</MudTh>
+        <MudTh></MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Id">@context.Id</MudTd>
+            <MudTd DataLabel="Title">@context.Title</MudTd>
+            <MudTd DataLabel="PointCategory">@context.PointCategoryTitle</MudTd>
+            <MudTd DataLabel="Feedbacks">@string.Join(", ", context.Feedbacks)</MudTd>
+            <MudTd DataLabel="Description">@context.Description</MudTd>
+            <MudTd DataLabel="Latitude">@context.Latitude</MudTd>
+            <MudTd DataLabel="Longitude">@context.Longitude</MudTd>
+            <MudTd>
+                <MudIconButton Icon="@Icons.Material.Filled.Edit" Variant="Variant.Outlined" Color="Color.Primary" Size="Size.Small" OnClick="() => EditPoint(context.Id)" />
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" Variant="Variant.Outlined" Color="Color.Primary" Size="Size.Small" OnClick="() => DeletePoint(context.Id)" />
+            </MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+    </MudTable>
+
+    @code {
+    private IEnumerable<PointModel> points = new List<PointModel>();
+    private string searchString = string.Empty;
+
+    private async Task ReloadData()
+    {
+        points = await PointService.GetPoints();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await ReloadData();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add(ex.Message, Severity.Error);
+        }
+    }
+
+    private async Task AddPoint()
+    {
+        var parameters = new DialogParameters { };
+        var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Large, FullWidth = true };
+
+        var dialog = await DialogService.ShowAsync<PointDialog>("Add point", parameters, options);
+        var result = await dialog.Result;
+
+        if (result.Canceled)
+            return;
+
+        try
+        {
+            var pointModel = ((PointDialog)dialog.Dialog).Model;
+            var createModel = new CreateModel()
+                {
+                    PointCategoryId = pointModel.PointCategoryId,
+                    Description = pointModel.Description,
+                    Title = pointModel.Title,
+                    Latitude = pointModel.Latitude,
+                    Longitude = pointModel.Longitude
+                };
+            await PointService.AddPoint(createModel);
+            await ReloadData();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add(ex.Message, Severity.Error);
+        }
+    }
+
+    private async Task EditPoint(Guid pointId)
+    {
+        var parameters = new DialogParameters();
+        parameters.Add("PointId", pointId);
+
+        var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Large, FullWidth = true };
+        var dialog = DialogService.Show<PointDialog>("Edit point", parameters, options);
+        var result = await dialog.Result;
+
+        if (result.Canceled)
+            return;
+
+        var model = ((PointDialog)dialog.Dialog).Model;
+        var updateModel = new UpdateModel()
+            {
+                Description = model.Description,
+                Title = model.Title,
+                Latitude = model.Latitude,
+                Longitude = model.Longitude
+            };
+
+        await PointService.EditPoint(pointId, updateModel);
+        await ReloadData();
+    }
+
+    private async Task DeletePoint(Guid pointId)
+    {
+        var parameters = new DialogParameters();
+        parameters.Add("ContentText", "Do you really want to delete this point? This process cannot be undone.");
+        parameters.Add("ButtonText", "Delete");
+        parameters.Add("Color", Color.Error);
+
+        var options = new DialogOptions() { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
+
+        var dialog = await DialogService.ShowAsync<ConfirmationDialog>("Delete point", parameters, options);
+        var result = await dialog.Result;
+
+        if (result.Canceled)
+            return;
+
+        await PointService.DeletePoint(pointId);
+        await ReloadData();
+    }
+}

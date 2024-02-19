@@ -1,0 +1,148 @@
+﻿@page "/"
+@inject IJSRuntime JSRuntime
+@using Microsoft.AspNetCore.Authorization
+@using NetSchool.Web.Pages.Points.Models
+@using NetSchool.Web.Pages.Points.Services
+@using NetSchool.Web.Pages.Points
+@inject ISnackbar Snackbar
+@inject IDialogService DialogService
+@inject IPointService PointService
+
+@layout MainLayout
+@attribute [Authorize]
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!!!</h1>
+
+<div>
+    <button class="btn btn-primary" @onclick="ToggleAddPointMode">Toggle Add Point Mode</button>
+</div>
+
+<div id="map" style="height: 400px;"></div>
+
+@code {
+    private IEnumerable<PointModel> points = new List<PointModel>();
+    private bool addPointMode = false; // Флаг для отслеживания режима добавления точек
+
+    [Inject]
+    private IPointService pointService { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // Получаем точки из сервиса
+            points = await pointService.GetPoints();
+            await JSRuntime.InvokeVoidAsync("initMap", DotNetObjectReference.Create(this), points);
+        }
+        catch (Exception ex)
+        {
+            // Обработка ошибок
+            Console.WriteLine($"An error occurred: {ex.Message}");
+        }
+    }
+
+    // Метод для обработки клика на карте
+    [JSInvokable]
+    public async Task HandleMapClick(double lat, double lng)
+    {
+        if (addPointMode)
+        {
+            var parameters = new DialogParameters { };
+            parameters.Add("Latitude", lat);
+            parameters.Add("Longitude", lng);
+            var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Large, FullWidth = true };
+
+            var dialog = await DialogService.ShowAsync<PointDialog>("Add point", parameters, options);
+            var result = await dialog.Result;
+
+            if (result.Canceled)
+                return;
+
+            try
+            {
+                var pointModel = ((PointDialog)dialog.Dialog).Model;
+                var createModel = new CreateModel()
+                    {
+                        PointCategoryId = pointModel.PointCategoryId,
+                        Description = pointModel.Description,
+                        Title = pointModel.Title,
+                        Latitude = pointModel.Latitude,
+                        Longitude = pointModel.Longitude
+                    };
+                await PointService.AddPoint(createModel);
+
+                await JSRuntime.InvokeVoidAsync("addMarker", pointModel);
+
+                ((List<PointModel>)points).Add(pointModel);
+
+            }
+            catch (Exception ex)
+            {
+                Snackbar.Add(ex.Message, Severity.Error);
+            }         
+        }
+    }
+
+    [JSInvokable]
+    public async Task DetailInfoClick(PointModel point)
+    {
+        var parameters = new DialogParameters { };
+        parameters.Add("PointId", point.Id);
+        var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Large, FullWidth = true };
+
+        var dialog = await DialogService.ShowAsync<PointCard>("Detail info", parameters, options);
+        var result = await dialog.Result;
+
+        if (result.Canceled)
+            return;
+
+    }
+
+    private void ToggleAddPointMode()
+    {
+        addPointMode = !addPointMode;
+    }
+}
+
+<script>
+    // Скрипт Leaflet для инициализации карты и добавления маркеров
+    var map;
+
+    window.initMap = function (dotnetHelper, points) {
+        map = L.map('map').setView([51.505, -0.09], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        //Добавляем маркеры для каждой точки из списка
+        // points.forEach(function (point) {
+        //     L.marker([point.latitude, point.longitude]).addTo(map)
+        //         .bindPopup('<b>' + point.title + '</b><br>' + point.description);
+        // });
+
+        // Добавляем маркеры для каждой точки из списка
+        points.forEach(function (point) {
+            var marker = L.marker([point.latitude, point.longitude]);
+
+            marker.on('click', function (e) {
+                dotnetHelper.invokeMethodAsync('DetailInfoClick', point);
+            });
+
+            marker.addTo(map);
+        });
+
+
+        // Добавляем обработчик клика на карту
+        map.on('click', function (e) {
+            dotnetHelper.invokeMethodAsync('HandleMapClick', e.latlng.lat, e.latlng.lng);
+        });
+    }
+
+    // Функция для добавления нового маркера на карту
+    window.addMarker = function (point) {
+        L.marker([point.latitude, point.longitude]).addTo(map)
+            .bindPopup('<b>' + point.title + '</b><br>' + point.description);
+    }
+</script>

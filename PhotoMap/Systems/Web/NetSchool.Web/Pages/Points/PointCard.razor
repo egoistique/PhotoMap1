@@ -1,0 +1,102 @@
+﻿@using NetSchool.Web.Pages.Points.Models
+@using NetSchool.Web.Pages.Points.Services
+@inherits MudComponentBase
+
+@inject IPointService PointService
+
+<MudDialog>
+    <DialogContent>
+        <MudForm Model="Model" @ref="form">
+            <MudGrid>
+                <MudImage Src="/images/door.jpg" Alt="Mony the dog" Elevation="25" Class="rounded-lg" />
+                <MudItem xs="12" sm="6">
+                    <MudTextField Label="Title" @bind-Value="Model.Title" Disabled="true"
+                                  For="@(() => Model.Title)"
+                                  Required="true"
+                                  RequiredError="Title is required!">
+                    </MudTextField>
+                </MudItem>
+                <MudItem xs="12">
+                    <MudTextField Label="Description" Disabled="true"
+                                  Lines="5"
+                                  For="@(() => Model.Description)"
+                                  @bind-Value="Model.Description">
+                    </MudTextField>
+                </MudItem>
+
+
+                <MudItem xs="12" sm="6">
+                    <MudPaper Elevation="2" Style="height: 200px; overflow-y: auto;">
+                        @if (Model.Feedbacks != null && Model.Feedbacks.Any())
+                        {
+                            @foreach (var feedback in Model.Feedbacks)
+                            {
+                                <MudTextField Label="Feedback" Disabled="true" Lines="1" Value="@feedback"></MudTextField>
+                                @if (feedback != Model.Feedbacks.Last())
+                                {
+                                    <hr />
+                                }
+                            }
+                        }
+                        else
+                        {
+                            <MudText>No feedbacks available</MudText>
+                        }
+                    </MudPaper>
+                </MudItem>
+
+
+
+
+
+            </MudGrid>
+        </MudForm>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="MudBlazor.Color.Primary" OnClick="Submit">Ok</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; } = default!;
+
+    [Parameter] public Guid? PointId { get; set; }
+
+    [Parameter] public PointModel Model { get; set; } = new();
+
+    private MudForm form = default!;
+
+    MudSelect<Guid> selectPointCategory = default!;
+    private List<PointCategoryModel> PointCategories { get; set; } = new List<PointCategoryModel>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var pointCategories = await PointService.GetPointCategoryList();
+        PointCategories.AddRange(pointCategories);
+
+        if (PointId != null)
+        {
+            var point = await PointService.GetPoint(PointId.Value);
+
+            Model.Id = point.Id;
+            Model.PointCategoryId = point.PointCategoryId;
+            Model.Title = point.Title;
+            Model.Latitude = point.Latitude;
+            Model.Longitude = point.Longitude;
+            Model.Description = point.Description;
+            Model.Feedbacks = point.Feedbacks;
+        }
+    }
+
+    async Task Submit()
+    {
+        await form.Validate();
+        if (form.IsValid)
+        {
+            MudDialog.Close(DialogResult.Ok(true));
+        }
+    }
+
+    void Cancel() => MudDialog.Cancel();
+}
