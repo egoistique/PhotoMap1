@@ -11,10 +11,9 @@ public static class FeedbacksContextConfiguration
         modelBuilder.Entity<Feedback>().Property(x => x.Title).IsRequired();
         modelBuilder.Entity<Feedback>().Property(x => x.Title).HasMaxLength(2500);
         modelBuilder.Entity<Feedback>()
-            .HasOne(f => f.Point)
-            .WithMany(p => p.Feedbacks)
-            .HasForeignKey(f => f.PointId)
-            .IsRequired()
+            .HasOne(x => x.Point)
+            .WithMany(x => x.Feedbacks)
+            .HasForeignKey(x => x.PointId)
             .OnDelete(DeleteBehavior.Restrict);
     }
 }

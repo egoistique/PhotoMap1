@@ -12,6 +12,10 @@ public static class PointsContextConfiguration
         modelBuilder.Entity<Point>().Property(x => x.Latitude).IsRequired();
         modelBuilder.Entity<Point>().Property(x => x.Longitude).IsRequired();
         modelBuilder.Entity<Point>().Property(x => x.Title).HasMaxLength(250);
-        modelBuilder.Entity<Point>().HasOne(x => x.PointCategory).WithMany(x => x.Points).HasForeignKey(x => x.PointCategoryId).OnDelete(DeleteBehavior.Restrict);
+        modelBuilder.Entity<Point>()
+            .HasOne(x => x.PointCategory)
+            .WithMany(x => x.Points)
+            .HasForeignKey(x => x.PointCategoryId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

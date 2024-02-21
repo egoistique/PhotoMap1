@@ -1,0 +1,91 @@
+/* Общий стиль модального окна */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Затемнение фона */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Индекс окна должен быть выше чем остальные компоненты */
+  }
+  
+  .modal-content {
+    background-color: #333; /* Фоновый цвет формы */
+    padding: 20px;
+    border-radius: 10px;
+    position: relative; /* Добавлено позиционирование для крестика */
+  }
+  
+  .close {
+    color: #fff; /* Цвет крестика */
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  /* Стили для текстовых полей и кнопок */
+  input[type="text"],
+  textarea,
+  select,
+  button {
+    width: calc(100% - 20px); /* Ширина текстовых полей и селектов с учетом отступов */
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  input[type="text"],
+  textarea,
+  select {
+    background-color: #555; /* Фоновый цвет текстовых полей и селектов */
+    color: #fff; /* Цвет текста */
+  }
+  
+  button {
+    background-color: #6b5b95; /* Цвет кнопки */
+    color: #fff; /* Цвет текста кнопки */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #524364; /* Измененный цвет кнопки при наведении */
+  }
+  
+  /* Стили для выделения крайних контуров кнопок неоном */
+  button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #6b5b95, 0 0 0 4px #6b5b95, 0 0 0 6px #6b5b95;
+  }
+  
+  /* Стили для выпадающего списка */
+select {
+  width: calc(100%); /* Ширина с учетом отступов */
+  padding: 10px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 5px;
+  background-color: #555; /* Фоновый цвет */
+  color: #fff; /* Цвет текста */
+  appearance: none; /* Убираем стандартный стрелочный селектор */
+}
+
+/* Стили для стрелочки в выпадающем списке */
+select::after {
+  content: '\25BC'; /* Код символа стрелочки */
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: #fff; /* Цвет стрелочки */
+  pointer-events: none; /* Скрытие стрелочки от нажатий */
+}

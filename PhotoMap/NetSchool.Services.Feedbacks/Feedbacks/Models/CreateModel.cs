@@ -8,8 +8,8 @@ using FluentValidation;
 namespace NetSchool.Services.Feedbacks;
 public class CreateModel
 {
+    public Guid PointId { get; set; }
     public string Title { get; set; }
-    public int PointId { get; set; }
     public int Rating { get; set; }
 
 }
@@ -18,8 +18,9 @@ public class CreateModelProfile : Profile
 {
     public CreateModelProfile()
     {
-        CreateMap<CreateModel, Feedback>();
-
+        CreateMap<CreateModel, Feedback>()
+            .ForMember(dest => dest.PointId, opt => opt.Ignore())
+            .AfterMap<CreateModelActions>();
     }
 
     public class CreateModelActions : IMappingAction<CreateModel, Feedback>
@@ -35,20 +36,28 @@ public class CreateModelProfile : Profile
         {
             using var db = contextFactory.CreateDbContext();
 
+            var point = db.Points.FirstOrDefault(x => x.Uid == source.PointId);
+
+            destination.PointId = point.Id;
         }
     }
 }
 
-public class CreateFeedbackModelValidator : AbstractValidator<CreateModel>
+public class CreatePointModelValidator : AbstractValidator<CreateModel>
 {
-    public CreateFeedbackModelValidator(IDbContextFactory<MainDbContext> contextFactory)
+    public CreatePointModelValidator(IDbContextFactory<MainDbContext> contextFactory)
     {
         RuleFor(x => x.Title)
-            .NotEmpty().WithMessage("Title is required")
-            .MaximumLength(1000).WithMessage("Maximum length is 50");
-        RuleFor(x => x.Rating)
-            .NotEmpty().WithMessage("Rating is required")
-            ;
+             .NotEmpty().WithMessage("Title is required")
+             .MaximumLength(1000).WithMessage("Maximum length is 1000"); ;
+
+        RuleFor(x => x.PointId)
+            .NotEmpty().WithMessage("Point is required")
+            .Must((id) =>
+            {
+                using var context = contextFactory.CreateDbContext();
+                var found = context.Points.Any(a => a.Uid == id);
+                return found;
+            }).WithMessage("Point not found");
     }
 }
-

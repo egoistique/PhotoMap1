@@ -49,14 +49,7 @@ public class DemoHelper
             },
             Feedbacks = new List<Feedback>()
             {
-                new Feedback()
-                {
-                    Title = "Отличное место",
-                },
-                new Feedback()
-                {
-                    Title = "Всем советуем",
-                }
+
             },
             ImagePathes = new List<ImagePath>()
             {

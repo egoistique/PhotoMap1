@@ -33,12 +33,35 @@ public class FeedbackController : Controller
         return result;
     }
 
+    [HttpGet("{id:Guid}")]
+    [AllowAnonymous]
+    public async Task<IActionResult> Get([FromRoute] Guid id)
+    {
+        var result = await feedbackService.GetById(id);
+
+        if (result == null)
+            return NotFound();
+
+        return Ok(result);
+    }
+
+
     [HttpPost("")]
-    [Authorize(AppScopes.BooksWrite)]
+    //[Authorize(AppScopes.BooksWrite)]
+    [AllowAnonymous]
     public async Task<FeedbackModel> Create(CreateModel request)
     {
         var result = await feedbackService.Create(request);
 
         return result;
     }
+
+
+    [HttpDelete("{id:Guid}")]
+    [Authorize(AppScopes.BooksWrite)]
+    public async Task Delete([FromRoute] Guid id)
+    {
+        await feedbackService.Delete(id);
+    }
+
 }
