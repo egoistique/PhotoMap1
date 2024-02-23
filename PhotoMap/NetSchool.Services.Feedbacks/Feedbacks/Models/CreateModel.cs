@@ -11,7 +11,7 @@ public class CreateModel
     public Guid PointId { get; set; }
     public string Title { get; set; }
     public int Rating { get; set; }
-
+    public string FeedbackAuthor { get; set; }
 }
 
 public class CreateModelProfile : Profile
@@ -59,5 +59,9 @@ public class CreatePointModelValidator : AbstractValidator<CreateModel>
                 var found = context.Points.Any(a => a.Uid == id);
                 return found;
             }).WithMessage("Point not found");
+
+        RuleFor(x => x.FeedbackAuthor)
+         .NotEmpty().WithMessage("Author is required")
+         .MaximumLength(50).WithMessage("Maximum length is 50"); 
     }
 }

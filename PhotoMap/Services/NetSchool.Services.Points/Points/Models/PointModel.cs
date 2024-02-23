@@ -52,7 +52,8 @@ public class PointModelProfile : Profile
             destination.Id = point.Uid;
             destination.PointCategoryId = point.PointCategory.Uid;
             destination.PointCategoryTitle = point.PointCategory.Title;
-            destination.Feedbacks = point.Feedbacks?.Select(x => x.Title);
+            // Теперь помимо названий отзывов, возвращаем рейтинг и автора
+            destination.Feedbacks = point.Feedbacks?.Select(x => $"{x.Title} - {x.FeedbackAuthor} - {x.Rating}");
             destination.ImagePathes = point.ImagePathes?.Select(x => x.Title);
         }
     }

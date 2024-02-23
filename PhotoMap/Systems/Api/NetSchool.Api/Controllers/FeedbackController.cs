@@ -47,8 +47,8 @@ public class FeedbackController : Controller
 
 
     [HttpPost("")]
-    //[Authorize(AppScopes.BooksWrite)]
-    [AllowAnonymous]
+    [Authorize(AppScopes.BooksWrite)]
+    //[AllowAnonymous]
     public async Task<FeedbackModel> Create(CreateModel request)
     {
         var result = await feedbackService.Create(request);
