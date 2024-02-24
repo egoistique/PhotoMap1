@@ -7,6 +7,7 @@ using NetSchool.Api.Settings;
 using NetSchool.Services.Points;
 using NetSchool.Services.PointCategories;
 using NetSchool.Services.Feedbacks;
+using NetSchool.Services.ImagePathes;
 using NetSchool.Services.RabbitMq;
 using NetSchool.Services.Actions;
 using NetSchool.Services.UserAccount;
@@ -26,6 +27,7 @@ public static class Bootstrapper
             .AddPointService()
             .AddPointCategoryService()
             .AddFeedbackService()
+            .AddImageService()
             .AddRabbitMq()
             .AddActions()
             .AddUserAccountService()

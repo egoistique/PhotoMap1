@@ -53,10 +53,7 @@ public class DemoHelper
             },
             ImagePathes = new List<ImagePath>()
             {
-                new ImagePath()
-                {
-                    Title = "img/sobor.jpg",
-                }
+                
             }
         },
     };

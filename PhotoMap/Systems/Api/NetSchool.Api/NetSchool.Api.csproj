@@ -33,6 +33,7 @@
     <ProjectReference Include="..\..\..\Data\NetSchool.Context.Seeder\NetSchool.Context.Seeder.csproj" />
     <ProjectReference Include="..\..\..\Data\NetSchool.Context\NetSchool.Context.csproj" />
     <ProjectReference Include="..\..\..\NetSchool.Services.Feedbacks\NetSchool.Services.Feedbacks.csproj" />
+    <ProjectReference Include="..\..\..\NetSchool.Services.ImagePathes\NetSchool.Services.ImagePathes.csproj" />
     <ProjectReference Include="..\..\..\Services\NetSchool.Services.Actions\NetSchool.Services.Actions.csproj" />
     <ProjectReference Include="..\..\..\Services\NetSchool.Services.Logger\NetSchool.Services.Logger.csproj" />
     <ProjectReference Include="..\..\..\Services\NetSchool.Services.PointCategories\NetSchool.Services.PointCategories.csproj" />

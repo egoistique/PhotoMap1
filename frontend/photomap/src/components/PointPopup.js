@@ -1,5 +1,3 @@
-// PointPopup.js
-
 import React, { useState } from 'react';
 import { Marker, Popup } from 'react-leaflet';
 import AddFeedback from './AddFeedback';
@@ -7,6 +5,8 @@ import '../css/PointPopup.css';
 
 const PointPopup = ({ point, onClick }) => {
   const [isAddingFeedback, setIsAddingFeedback] = useState(false);
+  const [photoModalOpen, setPhotoModalOpen] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   const openAddFeedbackModal = () => {
     setIsAddingFeedback(true);
@@ -18,6 +18,25 @@ const PointPopup = ({ point, onClick }) => {
 
   const handleFeedbackAdded = () => {
     setIsAddingFeedback(false);
+  };
+
+  const openPhotoModal = () => {
+    setPhotoModalOpen(true);
+  };
+
+  const closePhotoModal = () => {
+    setPhotoModalOpen(false);
+  };
+
+  const handlePhotoChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setSelectedPhoto(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const renderRatingStars = (rating) => {
@@ -56,9 +75,17 @@ const PointPopup = ({ point, onClick }) => {
           <p>Отзывов пока нет</p>
         )}
 
-        {point.imagePathes.length > 0 && (
-          <img src={point.imagePathes[0]} alt={point.title} style={{ maxWidth: '100%' }} />
-        )}
+        <div className="photo-container">
+          {selectedPhoto ? (
+            <img src={selectedPhoto} alt="Selected" className="point-photo" />
+          ) : point.imagePathes.length > 0 ? (
+            <img src={point.imagePathes[0]} alt={point.title} className="point-photo" />
+          ) : (
+            <div className="placeholder">Фото не найдено</div>
+          )}
+          <input type="file" accept="image/*" onChange={handlePhotoChange} className="file-input" />
+          <button className="add-photo-button" onClick={openPhotoModal}>Добавить фото</button>
+        </div>
 
         {isAddingFeedback && (
           <AddFeedback
@@ -67,6 +94,14 @@ const PointPopup = ({ point, onClick }) => {
             onClose={closeAddFeedbackModal}
             onFeedbackAdded={handleFeedbackAdded}
           />
+        )}
+
+        {/* Модальное окно для добавления фото */}
+        {photoModalOpen && (
+          <div className="photo-modal">
+            <input type="file" accept="image/*" onChange={handlePhotoChange} className="file-input" />
+            <button className="close-photo-modal" onClick={closePhotoModal}>Закрыть</button>
+          </div>
         )}
       </Popup>
     </Marker>
