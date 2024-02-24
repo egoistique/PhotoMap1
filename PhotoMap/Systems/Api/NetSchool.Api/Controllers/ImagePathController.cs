@@ -47,8 +47,8 @@ public class ImagePathController : Controller
 
 
     [HttpPost("")]
-    [Authorize(AppScopes.BooksWrite)]
-    //[AllowAnonymous]
+    //[Authorize(AppScopes.BooksWrite)]
+    [AllowAnonymous]
     public async Task<ImagePathModel> Create(CreateModel request)
     {
         var result = await imageService.Create(request);
