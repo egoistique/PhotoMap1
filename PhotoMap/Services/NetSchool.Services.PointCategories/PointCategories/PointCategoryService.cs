@@ -36,6 +36,19 @@ public class PointCategoryService : IPointCategoryService
         return result;
     }
 
+    public async Task<PointCategoryModel> GetById(Guid id)
+    {
+        using var context = await dbContextFactory.CreateDbContextAsync();
+
+        var pointCategory = await context.PointCategories
+            .FirstOrDefaultAsync(x => x.Uid == id);
+
+        var result = mapper.Map<PointCategoryModel>(pointCategory);
+
+        return result;
+    }
+
+
     public async Task<PointCategoryModel> Create(CreateModel model)
     {
         //await createModelValidator.CheckAsync(model);

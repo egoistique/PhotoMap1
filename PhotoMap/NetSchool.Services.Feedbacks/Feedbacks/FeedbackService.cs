@@ -44,7 +44,7 @@ public class FeedbackService : IFeedbackService
         using var context = await dbContextFactory.CreateDbContextAsync();
 
         var feedback = await context.Feedbacks
-            .ToListAsync();
+            .FirstOrDefaultAsync(x => x.Uid == id);
 
         var result = mapper.Map<FeedbackModel>(feedback);
 

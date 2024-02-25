@@ -33,6 +33,18 @@ public class PointCategoryController : Controller
         return result;
     }
 
+    [HttpGet("{id:Guid}")]
+    [AllowAnonymous]
+    public async Task<IActionResult> Get([FromRoute] Guid id)
+    {
+        var result = await pointCategoryService.GetById(id);
+
+        if (result == null)
+            return NotFound();
+
+        return Ok(result);
+    }
+
     [HttpPost("")]
     [Authorize(AppScopes.BooksWrite)]
     public async Task<PointCategoryModel> Create(CreateModel request)

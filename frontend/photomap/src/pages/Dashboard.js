@@ -75,9 +75,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h2 className="dashboard-title">
-        Dashboard
-      </h2>
+
       <p className="add-point-label">Add Point</p>
       <div className="switch-container">
         <label className="switch">
@@ -86,7 +84,7 @@ const Dashboard = () => {
         </label>
       </div>
 
-      <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '600px', width: '100%', zIndex: 1 }}>
+      <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '700px', width: '100%', zIndex: 1 }}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

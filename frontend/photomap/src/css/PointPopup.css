@@ -1,39 +1,78 @@
-.add-feedback-button {
-  background-color: transparent;
-  border: 2px solid transparent;
-  border-radius: 50%; /* Делаем кнопку круглой */
-  width: 50px; /* Размер кнопки */
-  height: 50px; /* Размер кнопки */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+.popup {
+  z-index: 1000; /* Устанавливаем высокий индекс z для попапа */
 }
 
-.add-feedback-button::before {
-  content: '+';
-  font-size: 24px;
-  color: violet; /* Фиолетовый цвет для + */
-}
-
-.add-feedback-button:hover::before {
-  opacity: 1;
-}
-
-.add-feedback-button:hover {
-  border-color: violet; /* Фиолетовый контур при наведении */
-  box-shadow: 0 0 10px violet; /* Фиолетовая тень при наведении */
-}
-
-/* Добавим стили для попапа */
 .popup-content {
-  max-width: 300px; /* Устанавливаем максимальную ширину попапа */
+  display: flex;
+  flex-direction: column;
 }
 
-/* Обновим стили для изображения внутри попапа */
+.photo-container {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
 .point-photo {
-  max-width: 100%; /* Максимальная ширина изображения равна ширине контейнера */
-  max-height: 200px; /* Максимальная высота изображения */
-  object-fit: contain; /* Ограничиваем размеры изображения, сохраняя пропорции */
+  max-width: 100%;
+  max-height: 30vh;
+}
+
+.point-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0; /* Установим нулевой отступ сверху */
+}
+
+.title-container {
+  display: flex;
+  align-items: center; /* Выравниваем элементы по вертикали */
+  margin-bottom: 0px;
+}
+
+.point-title {
+  font-size: 20px; /* Уменьшаем размер шрифта названия точки */
+  margin-right: 5px; /* Уменьшаем отступ между названием и категорией */
+}
+
+.category-container {
+  margin-left: auto; /* Помещаем категорию вправо за счет использования margin-left: auto */
+}
+.point-description {
+  max-height: 80px;
+  overflow: auto;
+}
+
+.category-title {
+  border: 2px solid #00ff00; /* Устанавливаем границу шириной 2px и цветом #00ff00 */
+  border-radius: 20px; /* Делаем закругленные углы границы */
+  padding: 3px 10px; /* Устанавливаем отступы внутри границы */
+  font-size: 16px; /* Уменьшим размер шрифта категории для лучшего визуального восприятия */
+}
+
+
+.reviews-title {
+  font-size: 15px;
+}
+
+.review-list {
+  max-height: 100px;
+  overflow: auto;
+}
+
+.review-item {
+  margin-bottom: 5px;
+}
+
+.add-photo-button,
+.add-feedback-button {
+  padding: 5px 10px; /* Устанавливаем отступы */
+  font-size: 14px; /* Уменьшаем размер шрифта */
+  margin-right: 5px; /* Добавляем небольшой отступ между кнопками */
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: flex-end; /* Располагаем кнопки в конце контейнера */
+  margin-top: 5px; /* Увеличиваем верхний отступ */
 }
