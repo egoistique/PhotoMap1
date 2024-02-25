@@ -70,4 +70,30 @@
   .add-point-label {
     text-align: right;
   }
-  
+  /* Стили для категорий в виде Chips */
+.category {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 5px;
+  font-size: 14px;
+  border: 1px solid #9c27b0;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.category:hover {
+  background-color: #9c27b0;
+  color: white;
+}
+/* Добавляем стили для активной категории */
+.category.active {
+  background-color: #9c27b0;
+  color: white;
+}
+
+/* Добавляем стили для подсветки при наведении на активную категорию */
+.category.active:hover {
+  background-color: #9c27b0;
+  color: white;
+}

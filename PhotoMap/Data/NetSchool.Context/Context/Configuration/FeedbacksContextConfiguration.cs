@@ -14,6 +14,6 @@ public static class FeedbacksContextConfiguration
             .HasOne(x => x.Point)
             .WithMany(x => x.Feedbacks)
             .HasForeignKey(x => x.PointId)
-            .OnDelete(DeleteBehavior.Restrict);
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

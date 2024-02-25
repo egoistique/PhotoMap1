@@ -60,6 +60,23 @@ public class PointService : IPointService
         return result;
     }
 
+    public async Task<IEnumerable<PointModel>> GetByCategoryId(Guid categoryId)
+    {
+        using var context = await dbContextFactory.CreateDbContextAsync();
+
+        var points = await context.Points
+            .Include(x => x.PointCategory)
+            .Include(x => x.Feedbacks)
+            .Include(x => x.ImagePathes)
+            .Where(x => x.PointCategory.Uid == categoryId) 
+            .ToListAsync();
+
+        var result = mapper.Map<IEnumerable<PointModel>>(points);
+
+        return result;
+    }
+
+
     public async Task<PointModel> Create(CreateModel model)
     {
         await createModelValidator.CheckAsync(model);

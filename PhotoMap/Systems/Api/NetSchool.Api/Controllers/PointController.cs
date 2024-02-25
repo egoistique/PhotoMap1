@@ -44,6 +44,14 @@ public class PointController : ControllerBase
         return Ok(result);
     }
 
+    [HttpGet("category/{categoryId:Guid}")]
+    [AllowAnonymous]
+    public async Task<IEnumerable<PointModel>> GetByCategory([FromRoute] Guid categoryId)
+    {
+        var result = await pointService.GetByCategoryId(categoryId);
+        return result;
+    }
+
     [HttpPost("")]
     [Authorize(AppScopes.BooksWrite)]
     public async Task<PointModel> Create(CreateModel request)

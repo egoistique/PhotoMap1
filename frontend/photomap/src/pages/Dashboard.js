@@ -7,20 +7,28 @@ import '../css/Dashboard.css';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import AddPointForm from '../components/AddPointForm';
 import PointPopup from '../components/PointPopup';
+
 const Dashboard = () => {
   const [points, setPoints] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [toggleState, setToggleState] = useState(false);
   const [showAddPointForm, setShowAddPointForm] = useState(false);
   const [clickPosition, setClickPosition] = useState({ lat: 0, lng: 0 });
-  const [selectedPoint, setSelectedPoint] = useState(null); // Состояние для отслеживания выбранной точки
+  const [selectedPoint, setSelectedPoint] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null); 
 
   useEffect(() => {
-    fetchPoints();
-  }, []);
+    fetchPoints(selectedCategory);
+    fetchCategories();
+  }, [selectedCategory]);
 
-  const fetchPoints = async () => {
+  const fetchPoints = async (category = null) => {
     try {
-      const response = await fetch('http://localhost:5247/v1/Point', {
+      let url = 'http://localhost:5247/v1/Point';
+      if (category) {
+        url = `http://localhost:5247/v1/Point/category/${category}`;
+      }
+      const response = await fetch(url, {
         headers: {
           'Authorization': 'Bearer YOUR_ACCESS_TOKEN_HERE',
           'Accept': 'application/json'
@@ -30,6 +38,16 @@ const Dashboard = () => {
       setPoints(data);
     } catch (error) {
       console.error('Error fetching points:', error);
+    }
+  };
+
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch('http://localhost:5247/v1/PointCategory');
+      const data = await response.json();
+      setCategories([{ id: 'all', title: 'Все' }, ...data]);
+    } catch (error) {
+      console.error('Error fetching categories:', error);
     }
   };
 
@@ -52,7 +70,7 @@ const Dashboard = () => {
     }
   };
 
-  const handleMarkerClick = (point) => { // Обработчик клика на маркере
+  const handleMarkerClick = (point) => { 
     setSelectedPoint(point);
   }
 
@@ -73,9 +91,23 @@ const Dashboard = () => {
     setShowAddPointForm(false);
   };
 
+  const handleCategoryClick = (categoryId) => {
+    setSelectedCategory(categoryId === 'all' ? null : categoryId); 
+  };
+
   return (
     <div>
-
+      <div className="categories">
+        {categories.map(category => (
+          <div 
+            key={category.id} 
+            className={`category ${(!selectedCategory && category.id === 'all') || selectedCategory === category.id ? 'active' : ''}`} // Добавляем класс active для активной категории
+            onClick={() => handleCategoryClick(category.id)}
+          >
+            {category.title}
+          </div>
+        ))}
+      </div>
       <p className="add-point-label">Add Point</p>
       <div className="switch-container">
         <label className="switch">
@@ -83,7 +115,6 @@ const Dashboard = () => {
           <span className="slider round"></span>
         </label>
       </div>
-
       <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '700px', width: '100%', zIndex: 1 }}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -96,11 +127,9 @@ const Dashboard = () => {
           onClick={handleMapClick}
         />
         {points.map(point => (
-          <PointPopup key={point.id} point={point} onClick={() => handleMarkerClick(point)} /> // Используйте новый компонент
+          <PointPopup key={point.id} point={point} onClick={() => handleMarkerClick(point)} /> 
         ))}
-
       </MapContainer>
-
       {showAddPointForm && toggleState && (
         <AddPointForm
           latitude={clickPosition.lat} 
@@ -111,6 +140,7 @@ const Dashboard = () => {
       )}
     </div>
   );
+  
 };
 
 const ClickHandler = ({ setPoints, points, toggleState, onClick }) => {
