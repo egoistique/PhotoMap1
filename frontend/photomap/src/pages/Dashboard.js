@@ -1,12 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
-import markerIcon from '../res/marker-icon.png';
-import '../css/Dashboard.css';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-import AddPointForm from '../components/AddPointForm';
-import PointPopup from '../components/PointPopup';
+import {  React,  useState,  useEffect,  useRef,  MapContainer,  TileLayer,  Marker,  Popup,  useMapEvents,  L,  markerIcon,
+  iconShadow,  AddPointForm,  PointPopup,  fetchPoints,  fetchCategories} from '../lib/imports'; 
 
 const Dashboard = () => {
   const [points, setPoints] = useState([]);
@@ -14,42 +7,21 @@ const Dashboard = () => {
   const [toggleState, setToggleState] = useState(false);
   const [showAddPointForm, setShowAddPointForm] = useState(false);
   const [clickPosition, setClickPosition] = useState({ lat: 0, lng: 0 });
-  const [selectedPoint, setSelectedPoint] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null); 
+  const [miniSidebarState, setMiniSidebarState] = useState(false);
+  const [selectedMarkers, setSelectedMarkers] = useState(Array.from({ length: 5 }, () => null)); 
 
+  const [toggleRouteState, setToggleRouteState] = useState(true);
+  
   useEffect(() => {
-    fetchPoints(selectedCategory);
-    fetchCategories();
+    async function fetchData() {
+      const pointsData = await fetchPoints(selectedCategory); 
+      setPoints(pointsData); 
+      const categoriesData = await fetchCategories();
+      setCategories(categoriesData); 
+    }
+    fetchData();
   }, [selectedCategory]);
-
-  const fetchPoints = async (category = null) => {
-    try {
-      let url = 'http://localhost:5247/v1/Point';
-      if (category) {
-        url = `http://localhost:5247/v1/Point/category/${category}`;
-      }
-      const response = await fetch(url, {
-        headers: {
-          'Authorization': 'Bearer YOUR_ACCESS_TOKEN_HERE',
-          'Accept': 'application/json'
-        }
-      });
-      const data = await response.json();
-      setPoints(data);
-    } catch (error) {
-      console.error('Error fetching points:', error);
-    }
-  };
-
-  const fetchCategories = async () => {
-    try {
-      const response = await fetch('http://localhost:5247/v1/PointCategory');
-      const data = await response.json();
-      setCategories([{ id: 'all', title: 'Все' }, ...data]);
-    } catch (error) {
-      console.error('Error fetching categories:', error);
-    }
-  };
 
   useEffect(() => {
     delete L.Icon.Default.prototype._getIconUrl;
@@ -69,10 +41,6 @@ const Dashboard = () => {
       setShowAddPointForm(true);
     }
   };
-
-  const handleMarkerClick = (point) => { 
-    setSelectedPoint(point);
-  }
 
   const handleFormSubmit = async (formData) => {
     const newPoint = {
@@ -95,19 +63,52 @@ const Dashboard = () => {
     setSelectedCategory(categoryId === 'all' ? null : categoryId); 
   };
 
+  const handleMarkerSelection = (index) => {
+    setToggleRouteState(true);
+    console.log(toggleRouteState); 
+    const markerToAdd = points[index];
+    if (markerToAdd && selectedMarkers[index] === null) {
+      const updatedMarkers = [...selectedMarkers];
+      updatedMarkers[index] = markerToAdd;
+      setSelectedMarkers(updatedMarkers);
+      console.log(updatedMarkers); 
+    }
+    setToggleRouteState(!toggleRouteState);
+    console.log(toggleRouteState); 
+  };
+
+  const handleRoute= () => {
+    //реализовать
+  }
   return (
     <div>
       <div className="categories">
         {categories.map(category => (
           <div 
             key={category.id} 
-            className={`category ${(!selectedCategory && category.id === 'all') || selectedCategory === category.id ? 'active' : ''}`} // Добавляем класс active для активной категории
+            className={`category ${(!selectedCategory && category.id === 'all') || selectedCategory === category.id ? 'active' : ''}`} 
             onClick={() => handleCategoryClick(category.id)}
           >
             {category.title}
           </div>
         ))}
       </div>
+      
+      <button className="mini-sidebar-toggle" onClick={() => setMiniSidebarState(!miniSidebarState)}> Маршрут </button>
+
+      <div className={`mini-sidebar ${miniSidebarState ? 'active' : ''}`}>
+        <div className="mini-sidebar-content">
+          <p>Панель маршрутов</p>      
+          {selectedMarkers.map((marker, index) => (
+          <div key={index} className="marker-row">
+            <button className="marker-button" onClick={() => handleMarkerSelection(index)}>+</button>
+            <p>{marker ? marker.title : 'Выберите маркер'}</p>
+          </div>
+        ))}
+        <button  onClick={() => handleRoute()}>Построить маршрут</button>
+        </div>
+      </div>
+
       <p className="add-point-label">Add Point</p>
       <div className="switch-container">
         <label className="switch">
@@ -116,20 +117,21 @@ const Dashboard = () => {
         </label>
       </div>
       <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '700px', width: '100%', zIndex: 1 }}>
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <ClickHandler
-          setPoints={setPoints}
-          points={points}
-          toggleState={toggleState}
-          onClick={handleMapClick}
-        />
-        {points.map(point => (
-          <PointPopup key={point.id} point={point} onClick={() => handleMarkerClick(point)} /> 
-        ))}
-      </MapContainer>
+  <TileLayer
+    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  />
+  <ClickHandler
+    setPoints={setPoints}
+    points={points}
+    toggleState={toggleState}
+    onClick={handleMapClick}
+  />
+  {points.map(point => (
+    <PointPopup key={point.id} point={point}  /> 
+  ))}
+</MapContainer>
+
       {showAddPointForm && toggleState && (
         <AddPointForm
           latitude={clickPosition.lat} 
@@ -140,7 +142,6 @@ const Dashboard = () => {
       )}
     </div>
   );
-  
 };
 
 const ClickHandler = ({ setPoints, points, toggleState, onClick }) => {

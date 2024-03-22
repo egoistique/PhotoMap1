@@ -75,4 +75,12 @@ public class PointController : ControllerBase
         await pointService.Delete(id);
     }
 
+    [HttpGet("search")]
+    [AllowAnonymous]
+    public async Task<IEnumerable<PointModel>> Search([FromQuery] string query)
+    {
+        var result = await pointService.SearchByName(query);
+        return result;
+    }
+
 }

@@ -129,4 +129,23 @@ public class PointService : IPointService
 
         await context.SaveChangesAsync();
     }
+
+    public async Task<IEnumerable<PointModel>> SearchByName(string query)
+    {
+        using var context = await dbContextFactory.CreateDbContextAsync();
+
+        var lowerQuery = query.ToLower(); 
+
+        var points = await context.Points
+            .Include(x => x.PointCategory)
+            .Include(x => x.Feedbacks)
+            .Include(x => x.ImagePathes)
+            .Where(x => x.Title.ToLower().Contains(lowerQuery)) 
+            .ToListAsync();
+
+        var result = mapper.Map<IEnumerable<PointModel>>(points);
+
+        return result;
+    }
+
 }

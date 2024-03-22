@@ -1,0 +1,20 @@
+.search-bar {
+    display: flex;
+    align-items: center; /* Выравнивание элементов по вертикали */
+    width: 100%; /* Занимает всю доступную ширину */
+  }
+  
+  .search-input {
+    flex: 95; /* Растягиваем поле ввода на 95% доступной ширины */
+    margin-right: 5px; /* Отступ между полем ввода и кнопкой */
+  }
+  
+  .search-button {
+    flex: 3; /* Занимает 5% доступной ширины */
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%; /* Делаем кнопку круглой */
+  }
+  
+  
