@@ -53,7 +53,7 @@
 
 .map-container {
     width: 85%;
-    padding: 10px;
+    margin-right: 10px;
     z-index: 10;
 }
 
@@ -62,3 +62,64 @@
     padding: 10px;
     background-color: #f5f5f5;
 }
+
+.points-box {
+    font-family: 'Roboto', sans-serif; /* Устанавливаем шрифт Roboto */
+    color: #333; /* Устанавливаем цвет шрифта темно-серым */
+}
+
+  .points-box h2 {
+    font-size: 16px; /* Устанавливаем размер шрифта заголовка */
+    color: #555;
+  }
+  
+  .points-box ul {
+    list-style-type: none; /* Убираем маркеры списка */
+    padding: 0;
+  }
+  
+  .points-box li {
+    font-weight: 300; /* Устанавливаем тонкий шрифт */
+    font-size: 14px; /* Устанавливаем размер шрифта для точек маршрута */
+  }
+  
+  .points-box button {
+    background: none;
+    color: red;
+    border: none;
+    cursor: pointer;
+    font-size: 12px; /* Устанавливаем размер шрифта для кнопки удаления точки маршрута */
+  }
+  .point-info {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .points-box {
+    font-family: Helvetica, sans-serif; /* Устанавливаем шрифт */
+  }
+  
+  .points-box ul {
+    padding: 0;
+    list-style: none;
+  }
+  
+  .points-box li {
+    margin-bottom: 10px; /* Отступ между элементами списка */
+    display: flex; /* Располагаем элементы списка в одной строке */
+    align-items: center; /* Выравниваем элементы по вертикали */
+  }
+  
+  .points-box button {
+    margin-left: 10px; /* Отступ между кнопкой и текстом */
+    background: none; /* Убираем фон у кнопки */
+    border: none; /* Убираем границу у кнопки */
+    cursor: pointer; /* Устанавливаем курсор при наведении */
+    font-size: 16px; /* Устанавливаем размер кнопки */
+    width: 16px; /* Устанавливаем минимальную ширину кнопки */
+    height: 16px; /* Устанавливаем минимальную высоту кнопки */
+    display: flex; /* Располагаем контент внутри кнопки в строку */
+    align-items: center; /* Выравниваем контент по вертикали */
+  }
+  
+  

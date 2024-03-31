@@ -49,7 +49,8 @@ const RoutePage = () => {
             
             const newRoutingControl = L.Routing.control({
                 waypoints: points.map(point => L.latLng(point)),
-                routeWhileDragging: true
+                routeWhileDragging: true,
+                collapsible: true,
             });
             
             

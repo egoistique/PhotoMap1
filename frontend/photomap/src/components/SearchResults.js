@@ -15,6 +15,9 @@ const SearchResults = ({ results, onPointClick }) => {
 
     return (
         <div className={`search-results ${isCollapsed ? 'collapsed' : ''}`}>
+                        <div className="collapse-toggle" onClick={handleToggleCollapse}>
+                <FontAwesomeIcon icon={isCollapsed ? faAngleDown : faAngleUp} /> 
+            </div>
             {!isCollapsed && (
                 <>
                     {results.map((result, index) => (
@@ -24,9 +27,7 @@ const SearchResults = ({ results, onPointClick }) => {
                     ))}
                 </>
             )}
-            <div className="collapse-toggle" onClick={handleToggleCollapse}>
-                <FontAwesomeIcon icon={isCollapsed ? faAngleDown : faAngleUp} /> {/* Используем иконки из Font Awesome */}
-            </div>
+
         </div>
     );
 };

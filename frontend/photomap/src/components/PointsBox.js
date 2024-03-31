@@ -30,9 +30,8 @@ const PointsBox = ({ points, setPoints }) => {
       <ul>
         {points.map((point, index) => (
           <li key={index}>
-            Имя: {pointNames[index] || 'Unknown'}, 
-            Широта: {point[0]}, 
-            Долгота: {point[1]}
+            {pointNames[index] || 'Unknown'}
+
             <button onClick={() => handlePointDelete(index)}>✖</button>
           </li>
         ))}
