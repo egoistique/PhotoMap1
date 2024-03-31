@@ -1,8 +1,9 @@
-import { React, useState, useEffect, useRef, MapContainer, TileLayer, Marker, Popup, SearchBar, useMapEvents, L, markerIcon, iconShadow, AddPointForm, PointPopup, fetchPointsBySearch, fetchCategories } from '../lib/imports';
+import { React, useState, useEffect, useRef, MapContainer, TileLayer, Marker, Popup, SearchBar, useMapEvents, L, markerIcon, iconShadow, AddPointForm, PointPopup, fetchPointsBySearch, fetchCategories, fetchPointNameByCoordinates} from '../lib/imports';
 import 'leaflet-routing-machine';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 import '../css/RoutePage.css';
+import PointsBox from '../components/PointsBox';
 import SearchResults from '../components/SearchResults';
 
 const createMap = () => {
@@ -21,35 +22,15 @@ const addMarkers = (map, points) => {
     });
 };
 
-const addRoutes = (map, points) => {
-    const routingControl = L.Routing.control({
-        waypoints: points.map(point => L.latLng(point)),
-        routeWhileDragging: true
-    }).addTo(map);
-
-    routingControl.on('routeselected', function (e) {
-        console.log(e);
-    });
-};
-
 const RoutePage = () => {
     const [searchResults, setSearchResults] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
     const [map, setMap] = useState(null);
     const [points, setPoints] = useState([]);
-
+    const [routingControl, setRoutingControl] = useState(null);
     useEffect(() => {
         const map = createMap();
         setMap(map);
-        const initialPoints = [
-            [51.5, -0.09], // Точка 1
-            [51.51, -0.1], // Точка 2
-            [51.52, -0.1], // Точка 3
-            [51.53, -0.11] // Точка 4
-        ];
-        setPoints(initialPoints);
-        addMarkers(map, initialPoints);
-        addRoutes(map, initialPoints);
 
         return () => {
             if (map) {
@@ -60,24 +41,32 @@ const RoutePage = () => {
 
     useEffect(() => {
         if (map && points.length > 1) {
-            const routingControl = L.Routing.control({
+            
+            if (routingControl) {
+                map.removeControl(routingControl);
+            }
+            
+            
+            const newRoutingControl = L.Routing.control({
                 waypoints: points.map(point => L.latLng(point)),
                 routeWhileDragging: true
             });
-            map.eachLayer(layer => {
-                if (layer instanceof L.Routing.Control) {
-                    map.removeLayer(layer);
-                }
-            });
-            routingControl.addTo(map);
+            
+            
+            setRoutingControl(newRoutingControl);
+            
+            
+            newRoutingControl.addTo(map);
         }
     }, [map, points]);
 
     const handleSearch = async (query) => {
         setSearchQuery(query);
         try {
-            const data = await fetchPointsBySearch(query);
-            setSearchResults(data);
+            if (query.trim() !== '') {
+                const data = await fetchPointsBySearch(query);
+                setSearchResults(data);
+            }
         } catch (error) {
             console.error('Ошибка при выполнении запроса', error);
         }
@@ -94,8 +83,13 @@ const RoutePage = () => {
                 <SearchBar onSearch={handleSearch} />
                 {searchResults.length > 0 && <SearchResults results={searchResults} onPointClick={handlePointClick} />}
             </div>
-            <div className="map-container">
-                <div id="map" style={{ width: '100%', height: 'calc(100vh - 200px)' }}></div>
+            <div className="map-and-points-container">
+                <div className="map-container">
+                    <div id="map" style={{ width: '100%', height: 'calc(100vh - 200px)' }}></div>
+                </div>
+                <div className="points-container">        
+                    <PointsBox points={points} setPoints={setPoints}/>
+                </div>
             </div>
         </div>
     );

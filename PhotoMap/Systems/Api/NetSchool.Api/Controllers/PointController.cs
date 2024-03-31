@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using NetSchool.Common.Security;
 using NetSchool.Services.Points;
 using NetSchool.Services.Logger;
+using NetSchool.Common.Exceptions;
 
 [ApiController]
 
@@ -81,6 +82,25 @@ public class PointController : ControllerBase
     {
         var result = await pointService.SearchByName(query);
         return result;
+    }
+    
+    [HttpGet("name")]
+    [AllowAnonymous]
+    public async Task<IActionResult> GetPointNameByCoordinates([FromQuery] double latitude, [FromQuery] double longitude)
+    {
+        try
+        {
+            var result = await pointService.GetPointNameByCoordinates(latitude, longitude);
+            return Ok(result);
+        }
+        catch (ProcessException ex)
+        {
+            return NotFound(ex.Message);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, "An error occurred while processing your request.");
+        }
     }
 
 }

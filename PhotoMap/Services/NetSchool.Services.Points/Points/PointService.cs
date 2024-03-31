@@ -147,5 +147,19 @@ public class PointService : IPointService
 
         return result;
     }
+    public async Task<string> GetPointNameByCoordinates(double latitude, double longitude)
+    {
+        using var context = await dbContextFactory.CreateDbContextAsync();
+
+        var point = await context.Points.FirstOrDefaultAsync(p => p.Latitude == latitude && p.Longitude == longitude);
+
+        if (point == null)
+        {
+            
+            throw new ProcessException($"Point with coordinates ({latitude}, {longitude}) not found.");
+        }
+
+        return point.Title;
+    }
 
 }

@@ -45,3 +45,21 @@ export const fetchPoints = async (category = null) => {
         return [];
     }
 };
+
+export const fetchPointNameByCoordinates = async (latitude, longitude) => {
+  try {
+    const url = `http://localhost:5247/v1/Point/name?latitude=${latitude}&longitude=${longitude}`;
+    const response = await fetch(url, {
+      headers: {
+        'Authorization': 'Bearer YOUR_ACCESS_TOKEN_HERE',
+        'Accept': 'application/json'
+      }
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching point name:', error);
+    return null;
+  }
+};
+

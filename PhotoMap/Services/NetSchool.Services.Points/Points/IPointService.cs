@@ -8,5 +8,6 @@ public interface IPointService
     Task Update(Guid id, UpdateModel model);
     Task Delete(Guid id);
     Task<IEnumerable<PointModel>> SearchByName(string query);
+    Task<string> GetPointNameByCoordinates(double latitude, double longitude);
 }
 

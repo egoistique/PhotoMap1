@@ -10,7 +10,7 @@ import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import AddPointForm from '../components/AddPointForm';
 import PointPopup from '../components/PointPopup';
 import SearchBar  from '../components/SearchBar';
-import { fetchPoints, fetchCategories, fetchPointsBySearch } from './api'; 
+import { fetchPoints, fetchCategories, fetchPointsBySearch,  fetchPointNameByCoordinates} from './api'; 
 
 export {
   React,
@@ -30,5 +30,6 @@ export {
   fetchPoints,
   fetchCategories,
   fetchPointsBySearch,
+  fetchPointNameByCoordinates,
   iconShadow 
 };
