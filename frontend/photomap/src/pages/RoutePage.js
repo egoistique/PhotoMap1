@@ -7,7 +7,7 @@ import PointsBox from '../components/PointsBox';
 import SearchResults from '../components/SearchResults';
 
 const createMap = () => {
-    const map = L.map('map').setView([51.505, -0.09], 13);
+    const map = L.map('map').setView([51.660598, 39.200585], 13); // Изменено на координаты Воронежа
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors'
@@ -38,6 +38,12 @@ const RoutePage = () => {
             }
         };
     }, []);
+
+        useEffect(() => {
+        if (map && points.length > 0) {
+            addMarkers(map, points);
+        }
+    }, [map, points]);
 
     useEffect(() => {
         if (map && points.length > 1) {

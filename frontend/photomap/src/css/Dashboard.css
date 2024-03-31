@@ -159,3 +159,9 @@
   margin-bottom: 10px;
 }
 
+
+.leaflet-control-attribution {
+  display: none;
+}
+
+

@@ -122,4 +122,7 @@
     align-items: center; /* Выравниваем контент по вертикали */
   }
   
+  .leaflet-control-attribution {
+    display: none;
+  }
   
