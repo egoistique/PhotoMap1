@@ -77,6 +77,7 @@ const RoutePage = () => {
                 routeWhileDragging: true,
                 createMarker: () => null,
                 collapsible: true,
+                language: 'ru',
             });
             
             setRoutingControl(newRoutingControl);            

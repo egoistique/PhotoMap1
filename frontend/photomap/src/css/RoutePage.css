@@ -125,4 +125,24 @@
   .leaflet-control-attribution {
     display: none;
   }
-  
+
+
+.point-name {
+  float: left; /* Расположение текста точки слева */
+}
+
+.delete-button {
+  float: right; /* Расположение кнопки удаления точки справа */
+}
+
+.points-box ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.points-box li {
+  display: flex;
+  justify-content: space-between;
+}
+
+
