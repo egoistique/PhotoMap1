@@ -5,8 +5,6 @@ import './App.css';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard';
-import NewPage from './pages/NewPage';
-import PointsList from './pages/PointsList';
 import Account from './pages/Account';
 import RoutePage from './pages/RoutePage';
 
@@ -25,9 +23,7 @@ function App() {
         <div className="content">
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/points-list" element={<PointsList />} />
-            <Route path="/account" element={<Account />} />
-            <Route path="/newpage" element={<NewPage />} />
+            <Route path="/account" element={<Account />} />        
             <Route path="/routepage" element={<RoutePage />} />
           </Routes>
         </div>

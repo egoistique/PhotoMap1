@@ -1,0 +1,111 @@
+.register-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #383c4a; /* Цвет фона формы */
+    border: 1px solid #9c27b0; /* Цвет рамки формы */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    z-index: 5; /* Устанавливаем z-index поверх затемнения */
+  }
+  
+
+  
+  
+  .register-form .modal-content {
+    background-color: #383c4a; /* темно-серый цвет фона */
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #9c27b0; /* фиолетовый цвет рамки */
+    width: 60%; /* Уменьшаем ширину до 60% от ширины экрана */
+    max-width: 400px; /* Ограничиваем максимальную ширину формы */
+    border-radius: 10px; /* скругление углов */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* тень */
+  }
+  
+  .register-form input[type="text"],
+  .register-form input[type="password"] {
+    width: calc(100% - 20px); /* Уменьшаем ширину поля ввода на величину паддинга */
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #9c27b0;
+    border-radius: 5px;
+    background-color: #555; /* серый цвет */
+    color: #fff; /* белый цвет текста ввода */
+  }
+  
+  .register-form .close {
+    color: #fff; /* белый цвет */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .register-form .close:hover,
+  .register-form .close:focus {
+    color: #ccc; /* серый цвет при наведении */
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .register-form label {
+    color: #fff; /* белый цвет текста меток */
+  }
+  
+  .register-form button[type="submit"] {
+    background-color: transparent;
+    color: #9c27b0; /* фиолетовый цвет текста кнопки */
+    border: 2px solid #9c27b0; /* фиолетовый цвет рамки кнопки */
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* плавное изменение цвета при наведении */
+  }
+  
+  .register-form button[type="submit"]:hover {
+    background-color: #9c27b0; /* фиолетовый цвет при наведении */
+    color: #fff; /* белый цвет текста при наведении */
+  }
+  .form-container {
+    width: 300px; /* Примерное значение ширины формы */
+    margin: 0 auto; /* Центрируем форму по горизонтали */
+  }
+  
+  .input-label {
+    display: block;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  
+  .input-field {
+    width: calc(100% - 20px); 
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #9c27b0;
+    border-radius: 5px;
+    background-color: #555;
+    color: #fff;
+  }
+  
+  .submit-button {
+    width: 100%;
+    background-color: transparent;
+    color: #9c27b0;
+    border: 2px solid #9c27b0;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .submit-button:hover {
+    background-color: #9c27b0;
+    color: #fff;
+  }
+  
