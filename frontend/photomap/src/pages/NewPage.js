@@ -22,11 +22,6 @@ const NewPage = () => {
       [51.53, -0.11] // Точка 4
     ];
 
-    // Добавление маркеров для каждой точки
-    points.forEach(point => {
-      L.marker(point).addTo(map);
-    });
-
     // Построение маршрутов между точками
     const routingControl = L.Routing.control({
       waypoints: [
@@ -35,7 +30,8 @@ const NewPage = () => {
         L.latLng(points[2]),
         L.latLng(points[3])
       ],
-      routeWhileDragging: true
+      routeWhileDragging: true,
+      createMarker: () => null // Скрыть маркеры точек
     }).addTo(map);
 
     // Обработчик изменения пути маршрута

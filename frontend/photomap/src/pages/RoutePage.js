@@ -1,4 +1,4 @@
-import { React, useState, useEffect, useRef, MapContainer, TileLayer, Marker, Popup, SearchBar, useMapEvents, L, markerIcon, iconShadow, AddPointForm, PointPopup, fetchPointsBySearch, fetchCategories, fetchPointNameByCoordinates} from '../lib/imports';
+import { React, useState, useEffect, useRef, MapContainer, TileLayer, Marker, Popup, SearchBar, useMapEvents, L, markerIcon, iconShadow, AddPointForm, PointPopup, fetchPointsBySearch, fetchCategories, fetchPoints,fetchPointNameByCoordinates} from '../lib/imports';
 import 'leaflet-routing-machine';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
@@ -18,9 +18,14 @@ const createMap = () => {
 
 const addMarkers = (map, points) => {
     points.forEach(point => {
-        L.marker(point).addTo(map);
+        if (point && point.latitude && point.longitude) {
+            const marker = L.marker([point.latitude, point.longitude]).addTo(map);
+            marker.bindPopup(point.title); // Предполагается, что у каждой точки есть свойство 'name' с названием
+        }
     });
 };
+
+
 
 const RoutePage = () => {
     const [searchResults, setSearchResults] = useState([]);
@@ -28,6 +33,7 @@ const RoutePage = () => {
     const [map, setMap] = useState(null);
     const [points, setPoints] = useState([]);
     const [routingControl, setRoutingControl] = useState(null);
+    const [pointsFromDB, setPointsFromDB] = useState([]);
     useEffect(() => {
         const map = createMap();
         setMap(map);
@@ -39,11 +45,25 @@ const RoutePage = () => {
         };
     }, []);
 
-        useEffect(() => {
-        if (map && points.length > 0) {
-            addMarkers(map, points);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const pointsData = await fetchPoints();
+                setPointsFromDB(pointsData);
+            } catch (error) {
+                console.error('Ошибка при загрузке точек из базы данных', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+
+    useEffect(() => {
+        if (map && pointsFromDB.length > 0) {
+            addMarkers(map, pointsFromDB);
         }
-    }, [map, points]);
+    }, [map, pointsFromDB]);
 
     useEffect(() => {
         if (map && points.length > 1) {
@@ -52,17 +72,14 @@ const RoutePage = () => {
                 map.removeControl(routingControl);
             }
             
-            
             const newRoutingControl = L.Routing.control({
                 waypoints: points.map(point => L.latLng(point)),
                 routeWhileDragging: true,
+                createMarker: () => null,
                 collapsible: true,
             });
             
-            
-            setRoutingControl(newRoutingControl);
-            
-            
+            setRoutingControl(newRoutingControl);            
             newRoutingControl.addTo(map);
         }
     }, [map, points]);
@@ -93,6 +110,7 @@ const RoutePage = () => {
             <div className="map-and-points-container">
                 <div className="map-container">
                     <div id="map" style={{ width: '100%', height: 'calc(100vh - 200px)' }}></div>
+                
                 </div>
                 <div className="points-container">        
                     <PointsBox points={points} setPoints={setPoints}/>
