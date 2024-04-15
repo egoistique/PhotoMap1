@@ -10,6 +10,9 @@
   transition: transform 0.3s ease-in-out; /* плавное анимированное открытие/закрытие */
   transform: translateX(-250px); /* начальное смещение влево за пределы экрана */
   z-index: 1000; /* чтобы слайдбар был поверх остального содержимого */
+  font-weight: 300;
+  text-align: left;
+
 }
 
 .sidebar.open {
@@ -21,7 +24,7 @@
   padding: 15px 20px; /* отступы вокруг текста ссылки */
   color: #fff; /* белый цвет текста ссылок */
   text-decoration: none; /* убрать подчеркивание ссылок */
-  font-size: 18px; /* размер текста ссылок */
+  font-size: 22px; /* размер текста ссылок */
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* плавное изменение цвета фона и текста при наведении */
 }
 

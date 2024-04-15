@@ -58,11 +58,8 @@
     cursor: pointer;
 }
 
-
-
 .content {
     flex-grow: 1;
-    padding: 20px;
 }
 
 /* Sidebar.css */
@@ -92,8 +89,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #333;
+  background-color: #252525;
   color: white;
+  font-weight: 300;
 }
 
 .menu-icon {
@@ -102,6 +100,18 @@
 
 .login-button {
   cursor: pointer;
+  font-weight: 300;
 }
 
+.dark-content {
+  background-color: #333;
+  color: white;
+}
+
+.logo {
+  flex-grow: 1; 
+  margin-left: 20px;
+  text-align: left;
+  font-weight: 300;
+}
 

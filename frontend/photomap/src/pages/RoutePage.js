@@ -34,6 +34,7 @@ const RoutePage = () => {
     const [points, setPoints] = useState([]);
     const [routingControl, setRoutingControl] = useState(null);
     const [pointsFromDB, setPointsFromDB] = useState([]);
+    const [darkTheme, setDarkTheme] = useState(false);
     useEffect(() => {
         const map = createMap();
         setMap(map);
@@ -102,8 +103,16 @@ const RoutePage = () => {
         setPoints([...points, [latitude, longitude]]);
     };
     
+    useEffect(() => {
+        const savedTheme = localStorage.getItem('darkTheme');
+        if (savedTheme) {
+          setDarkTheme(savedTheme === 'true');
+        }
+      }, []);
+
     return (
-        <div className="route-page-container">
+        <div className={`route-page-container ${darkTheme ? 'dark-theme' : ''}`}>
+       
             <div className="search">
                 <SearchBar onSearch={handleSearch} />
                 {searchResults.length > 0 && <SearchResults results={searchResults} onPointClick={handlePointClick} />}

@@ -7,6 +7,7 @@ const Dashboard = () => {
   const [showAddPointForm, setShowAddPointForm] = useState(false);
   const [clickPosition, setClickPosition] = useState({ lat: 0, lng: 0 });
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [darkTheme, setDarkTheme] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -24,6 +25,13 @@ const Dashboard = () => {
       iconUrl: markerIcon,
       shadowUrl: iconShadow
     });
+  }, []);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('darkTheme');
+    if (savedTheme) {
+      setDarkTheme(savedTheme === 'true');
+    }
   }, []);
 
   const handleToggle = () => {
@@ -59,7 +67,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
+    <div className={`page ${darkTheme ? 'dark-theme' : ''}`}>
       <div className="categories">
         {categories.map(category => (
           <div
@@ -79,7 +87,7 @@ const Dashboard = () => {
           <span className="slider round"></span>
         </label>
       </div>
-      <MapContainer center={[51.660598, 39.200585]} zoom={13} style={{ height: '700px', width: '100%', zIndex: 1 }}>
+      <MapContainer center={[51.660598, 39.200585]} zoom={13} style={{ height: '700px', width: '100%', zIndex: 1, margin: 10}}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

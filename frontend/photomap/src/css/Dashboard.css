@@ -1,4 +1,9 @@
 /* CSS для стилизации переключателя */
+.page {
+  height: 100vh; /* Занимает 100% высоты видимой области экрана */
+  display: flex; /* Размещение элементов внутри страницы в строку */
+  flex-direction: column; /* Элементы располагаются вертикально */
+}
 .switch-container {
     position: absolute;
     top: 120px;
@@ -69,6 +74,7 @@
   
   .add-point-label {
     text-align: right;
+    margin-right: 20px;
   }
   /* Стили для категорий в виде Chips */
 .category {
@@ -80,6 +86,8 @@
   border-radius: 20px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
+  margin-top: 20px;
+  margin-right: 20px;
 }
 
 .category:hover {
@@ -98,70 +106,36 @@
   color: white;
 }
 
-
-
-
-
-/* Добавляем стили для мини-сайдбара */
-.mini-sidebar {
-  position: fixed;
-  top: 105px;
-  right: 0;
-  width: 250px; /* Ширина мини-сайдбара */
-  height: 100%;
-  background-color: #fff; /* Цвет фона */
-  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1); /* Тень */
-  z-index: 2; /* Устанавливаем поверх других элементов */
-  transition: transform 0.3s ease; /* Анимация для плавного появления/скрытия */
-  transform: translateX(100%); /* Скрыть сайдбар за пределами экрана */
-}
-
-.mini-sidebar.active {
-  transform: translateX(0); /* Показать сайдбар */
-}
-
-/* Стили для кнопки открытия мини-сайдбара */
-/* CSS для кнопки открытия мини-сайдбара в правом нижнем углу экрана */
-/* CSS для овальной кнопки */
-.mini-sidebar-toggle {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 80px; /* Ширина кнопки */
-  height: 40px; /* Высота кнопки */
-  background-color: #007bff; /* Цвет фона кнопки */
-  color: #fff; /* Цвет текста */
-  border: none;
-  border-radius: 20px; /* Задаем радиус скругления */
-  cursor: pointer;
-  z-index: 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тень */
-}
-
-
-/* CSS для иконки на кнопке */
-.mini-sidebar-toggle i {
-  font-size: 20px;
-  border-radius: 20px;
-}
-
-
-/* Стили для контента мини-сайдбара */
-.mini-sidebar-content {
-  padding: 20px;
-}
-
-/* Стили для текста внутри мини-сайдбара */
-.mini-sidebar-content p {
-  margin-bottom: 10px;
-}
-
-
 .leaflet-control-attribution {
   display: none;
+}
+
+/* Добавляем стили для темной темы */
+.dark-theme .switch-container {
+  color: white;
+}
+
+.dark-theme .slider {
+  background-color: #555;
+}
+
+.dark-theme input:checked + .slider {
+  background-color: #9c27b0;
+}
+
+.dark-theme .slider:before {
+  background-color: #fff;
+}
+
+.dark-theme .category {
+  border-color: #9c27b0;
+  color: white;
+}
+
+.dark-theme .category.active,
+.dark-theme .category.active:hover {
+  background-color: #9c27b0;
+  color: white;
 }
 
 

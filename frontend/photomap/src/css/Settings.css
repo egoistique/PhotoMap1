@@ -9,6 +9,10 @@
   background-color: #444;
 }
 
+.dark-theme .setting {
+  border-color: #666;
+  background-color: #444;
+}
 .dark-theme .setting-label {
   color: #fff;
 }
@@ -22,8 +26,7 @@
 }
 
   .setting {
-    max-width: 600px;
-    max-height: 400px;
+    font-weight: 300;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #e0e0e0;
@@ -114,10 +117,13 @@
     display: flex;
     justify-content: center;
     position: absolute;
-    top: 125px; /* Расположение контейнера на 300 пикселей ниже верха экрана */
-    left: 50%; /* Расположение контейнера по центру оси X */
-    transform: translateX(-50%); /* Центрирование контейнера по оси X */
+    top: 106px; /* Расположение контейнера на 300 пикселей ниже верха экрана */
+    padding-top: 20px;
+    left: 0; /* Расположение контейнера в начале экрана */
+    right: 0; /* Расположение контейнера в конце экрана */
+    height: 100vh; /* Растягиваем контейнер на всю доступную высоту экрана */
   }
+  
   
   .settings-box {
     width: 600px; /* Ширина контейнера настроек */
@@ -128,5 +134,8 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  
-  
+  .settings-box h2 {
+    font-size: 26px;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }

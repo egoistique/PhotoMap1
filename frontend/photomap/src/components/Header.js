@@ -43,7 +43,7 @@ function Header({ toggleMenu }) {
       <div className="menu-icon" onClick={toggleMenu}>
         <FontAwesomeIcon icon={faBars} />
       </div>
-      <h1>Photo Map</h1>
+      <h1 className="logo">PhotoMap</h1>
       {isLoggedIn ? (
         <div className="user-info">
           <span>{userEmail}</span>
