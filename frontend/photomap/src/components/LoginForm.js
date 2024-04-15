@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../css/LoginForm.css';
+import RegisterForm from './RegisterForm';
 
 const Modal = ({ onClose, onLogin }) => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,7 @@ const Modal = ({ onClose, onLogin }) => {
   });
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const [showRegisterForm, setShowRegisterForm] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -22,7 +24,7 @@ const Modal = ({ onClose, onLogin }) => {
     try {
       const { data } = await axios.post(
         'http://localhost:5027/connect/token',
-        `grant_type=password&username=${formData.username}&password=${formData.password}&scope=books_read books_write`,
+        `grant_type=password&username=${formData.username}&password=${formData.password}&scope=points_read points_write`,
         {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -58,6 +60,10 @@ const Modal = ({ onClose, onLogin }) => {
     }
   };
 
+  const handleRegisterClick = () => {
+    setShowRegisterForm(true); // Открываем форму регистрации при клике на ссылку
+  };
+
   return (
     <div className="modal" style={{display: 'block'}}>
       <div className="modal-content">
@@ -75,7 +81,9 @@ const Modal = ({ onClose, onLogin }) => {
           </label>
           <button type="submit">Login</button>
         </form>
+        <p>Не зарегистрированы? <a href="#" onClick={handleRegisterClick}>Зарегистрироваться</a></p>
       </div>
+      {showRegisterForm && <RegisterForm onClose={() => setShowRegisterForm(false)} />}
     </div>
   );
 };

@@ -18,7 +18,7 @@ const PointPopup = ({ point, onClick }) => {
   useEffect(() => {
     const fetchCategoryTitle = async () => {
       try {
-        const response = await axios.get(`http://localhost:5247/v1/PointCategory/${point.pointCategoryId}`);
+        const response = await axios.get(`https://localhost:7089/v1/PointCategory/${point.pointCategoryId}`);
         setCategoryTitle(response.data.title);
       } catch (error) {
         console.error('Ошибка получения названия категории:', error);
@@ -62,7 +62,7 @@ const PointPopup = ({ point, onClick }) => {
           title: downloadURL,
         };
   
-        await axios.post('http://localhost:5247/v1/ImagePath', postData);
+        await axios.post('https://localhost:7089/v1/ImagePath', postData);
         closePhotoModal(); // закрываем модальное окно после успешной загрузки
       } catch (error) {
         console.error('Ошибка загрузки фото:', error);

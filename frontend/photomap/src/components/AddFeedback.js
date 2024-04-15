@@ -21,7 +21,7 @@ const AddFeedback = ({ pointId, userEmail, onClose, onFeedbackAdded }) => { // Ð
     e.preventDefault();
 
     try {
-      await axios.post('http://localhost:5247/v1/Feedback', {
+      await axios.post('https://localhost:7089/v1/Feedback', {
         pointId,
         title,
         rating,

@@ -1,8 +1,8 @@
 export const fetchPoints = async (category = null) => {
     try {
-      let url = 'http://localhost:5247/v1/Point';
+      let url = 'https://localhost:7089/v1/Point';
       if (category) {
-        url = `http://localhost:5247/v1/Point/category/${category}`;
+        url = `https://localhost:7089/v1/Point/category/${category}`;
       }
       const response = await fetch(url, {
         headers: {
@@ -20,7 +20,7 @@ export const fetchPoints = async (category = null) => {
   
   export const fetchCategories = async () => {
     try {
-      const response = await fetch('http://localhost:5247/v1/PointCategory');
+      const response = await fetch('https://localhost:7089/v1/PointCategory');
       const data = await response.json();
       return [{ id: 'all', title: 'Все' }, ...data];
     } catch (error) {
@@ -31,7 +31,7 @@ export const fetchPoints = async (category = null) => {
   
   export const fetchPointsBySearch = async (query) => {
     try {
-        const url = `http://localhost:5247/v1/Point/search?query=${encodeURIComponent(query)}`;
+        const url = `https://localhost:7089/v1/Point/search?query=${encodeURIComponent(query)}`;
         const response = await fetch(url, {
             headers: {
                 'Authorization': 'Bearer YOUR_ACCESS_TOKEN_HERE',
@@ -48,7 +48,7 @@ export const fetchPoints = async (category = null) => {
 
 export const fetchPointNameByCoordinates = async (latitude, longitude) => {
   try {
-    const url = `http://localhost:5247/v1/Point/name?latitude=${latitude}&longitude=${longitude}`;
+    const url = `https://localhost:7089/v1/Point/name?latitude=${latitude}&longitude=${longitude}`;
     const response = await fetch(url, {
       headers: {
         'Authorization': 'Bearer YOUR_ACCESS_TOKEN_HERE',
