@@ -38,9 +38,19 @@ public class CreateModelProfile : Profile
 
 public class CreateSubscriberModelValidator : AbstractValidator<CreateSubscriberModel>
 {
+    private readonly IDbContextFactory<MainDbContext> _contextFactory;
+
     public CreateSubscriberModelValidator(IDbContextFactory<MainDbContext> contextFactory)
     {
+        _contextFactory = contextFactory;
+
         RuleFor(x => x.Email)
-            .NotEmpty().WithMessage("Email is required");
+            .NotEmpty().WithMessage("Email is required")
+            .Must((email) =>
+            {
+                using var context = contextFactory.CreateDbContext();
+                var found = context.Subscribers.Any(a => a.Email == email);
+                return !found;
+            }).WithMessage("Email must be unique");
     }
 }

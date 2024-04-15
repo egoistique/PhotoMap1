@@ -4,13 +4,9 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import '../css/Settings.css';
 
 const Settings = () => {
-  // Состояние для настройки темной темы
   const [darkTheme, setDarkTheme] = useState(false);
-
-  // Состояние для настройки уведомлений о добавлении новых точек
   const [notifyNewPoints, setNotifyNewPoints] = useState(false);
-
-  // Загрузка сохраненной информации при первом рендере компонента
+  const [email, setEmail] = useState('');
   useEffect(() => {
     const savedTheme = localStorage.getItem('darkTheme');
     if (savedTheme) {
@@ -18,18 +14,71 @@ const Settings = () => {
     }
   }, []);
 
-  // Обработчик изменения настройки темной темы
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('darkTheme');
+    if (savedTheme) {
+      setDarkTheme(savedTheme === 'true');
+    }
+
+    const savedEmail = localStorage.getItem('email');
+    if (savedEmail) {
+      setEmail(savedEmail);
+    }
+  }, []);
+
   const handleDarkThemeChange = () => {
     const newTheme = !darkTheme;
     setDarkTheme(newTheme);
     localStorage.setItem('darkTheme', newTheme);
-    // Здесь можно добавить логику для сохранения настройки
   };
 
   // Обработчик изменения настройки уведомлений о новых точках
-  const handleNotifyNewPointsChange = () => {
+  const handleNotifyNewPointsChange = async () => {
+    // Изменяем состояние настройки уведомлений
     setNotifyNewPoints(!notifyNewPoints);
-    // Здесь можно добавить логику для сохранения настройки
+
+    // Если уведомления включены, выполняем запрос к бекенду
+    if (!notifyNewPoints) {
+      try {
+        const response = await fetch('https://localhost:7089/v1/Subscriber', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email: email
+          })
+        });
+        console.log('Email to subscribe:', email);
+
+        if (!response.ok) {
+          throw new Error('Failed to subscribe for new points notifications');
+        }
+
+        console.log('Subscribed successfully for new points notifications');
+      } catch (error) {
+        console.error('Error subscribing for new points notifications:', error.message);
+        // Возможно, здесь стоит добавить логику для обработки ошибки
+      }
+    }else {
+      try {
+        const response = await fetch(`https://localhost:7089/v1/Subscriber/${encodeURIComponent(email)}`, {
+          method: 'DELETE',
+          headers: {
+            'Accept': '*/*'
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to unsubscribe from new points notifications');
+        }
+
+        console.log('Unsubscribed successfully from new points notifications');
+      } catch (error) {
+        console.error('Error unsubscribing from new points notifications:', error.message);
+        // Возможно, здесь стоит добавить логику для обработки ошибки
+      }
+    }
   };
 
   return (
