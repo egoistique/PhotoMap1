@@ -5,6 +5,7 @@ using PhotoMap.Common.Validator;
 using PhotoMap.Context;
 using PhotoMap.Context.Entities;
 using PhotoMap.Services.Actions;
+using PhotoMap.Services.Mailing;
 
 namespace PhotoMap.Services.Points;
 
@@ -15,12 +16,14 @@ public class PointService : IPointService
     private readonly IAction action;
     private readonly IModelValidator<CreateModel> createModelValidator;
     private readonly IModelValidator<UpdateModel> updateModelValidator;
+    private readonly IMailingService mailingService;
 
     public PointService(IDbContextFactory<MainDbContext> dbContextFactory,
         IMapper mapper,
         IAction action,
         IModelValidator<CreateModel> createModelValidator,
-        IModelValidator<UpdateModel> updateModelValidator
+        IModelValidator<UpdateModel> updateModelValidator,
+        IMailingService mailingService
         )
     {
         this.dbContextFactory = dbContextFactory;
@@ -28,6 +31,7 @@ public class PointService : IPointService
         this.action = action;
         this.createModelValidator = createModelValidator;
         this.updateModelValidator = updateModelValidator;
+        this.mailingService = mailingService;
     }
 
     public async Task<IEnumerable<PointModel>> GetAll()
@@ -97,6 +101,8 @@ public class PointService : IPointService
             //Longitude = point.Longitude,
             Description = point.Description
         });
+
+        await mailingService.DoMailing(model.Title);
 
         return mapper.Map<PointModel>(point);
     }

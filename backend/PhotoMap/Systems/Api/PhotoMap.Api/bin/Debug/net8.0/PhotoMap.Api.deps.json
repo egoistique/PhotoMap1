@@ -22,6 +22,7 @@
           "PhotoMap.Services.Feedbacks": "1.0.0",
           "PhotoMap.Services.ImagePathes": "1.0.0",
           "PhotoMap.Services.Logger": "1.0.0",
+          "PhotoMap.Services.Mailing": "1.0.0",
           "PhotoMap.Services.PointCategories": "1.0.0",
           "PhotoMap.Services.Points": "1.0.0",
           "PhotoMap.Services.RabbitMq": "1.0.0",
@@ -1622,6 +1623,15 @@
           "PhotoMap.Services.Logger.dll": {}
         }
       },
+      "PhotoMap.Services.Mailing/1.0.0": {
+        "dependencies": {
+          "PhotoMap.Common": "1.0.0",
+          "PhotoMap.Context": "1.0.0"
+        },
+        "runtime": {
+          "PhotoMap.Services.Mailing.dll": {}
+        }
+      },
       "PhotoMap.Services.PointCategories/1.0.0": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
@@ -1635,7 +1645,8 @@
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
           "PhotoMap.Context": "1.0.0",
-          "PhotoMap.Services.Actions": "1.0.0"
+          "PhotoMap.Services.Actions": "1.0.0",
+          "PhotoMap.Services.Mailing": "1.0.0"
         },
         "runtime": {
           "PhotoMap.Services.Points.dll": {}
@@ -2737,6 +2748,11 @@
       "sha512": ""
     },
     "PhotoMap.Services.Logger/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PhotoMap.Services.Mailing/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

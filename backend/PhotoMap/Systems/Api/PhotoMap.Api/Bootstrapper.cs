@@ -11,6 +11,7 @@ using PhotoMap.Services.ImagePathes;
 using PhotoMap.Services.RabbitMq;
 using PhotoMap.Services.Actions;
 using PhotoMap.Services.UserAccount;
+using PhotoMap.Services.Mailing;
 
 public static class Bootstrapper
 {
@@ -32,6 +33,7 @@ public static class Bootstrapper
             .AddActions()
             .AddUserAccountService()
             .AddHttpClient()
+            .AddMailingService()
             ;
 
         return service;

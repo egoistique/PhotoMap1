@@ -212,3 +212,5 @@ S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Systems\Api\PhotoMap.Api\bin
 S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Systems\Api\PhotoMap.Api\bin\Debug\net8.0\PhotoMap.Services.RabbitMq.pdb
 S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Systems\Api\PhotoMap.Api\bin\Debug\net8.0\PhotoMap.Services.UserAccount.dll
 S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Systems\Api\PhotoMap.Api\bin\Debug\net8.0\PhotoMap.Services.UserAccount.pdb
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Systems\Api\PhotoMap.Api\bin\Debug\net8.0\PhotoMap.Services.Mailing.dll
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Systems\Api\PhotoMap.Api\bin\Debug\net8.0\PhotoMap.Services.Mailing.pdb

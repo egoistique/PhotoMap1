@@ -7,6 +7,7 @@ import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard';
 import Account from './pages/Account';
 import RoutePage from './pages/RoutePage';
+import Settings from './pages/Settings';
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,6 +26,7 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/account" element={<Account />} />        
             <Route path="/routepage" element={<RoutePage />} />
+            <Route path="/settings" element={<Settings />} />
           </Routes>
         </div>
       </div>

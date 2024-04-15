@@ -286,6 +286,29 @@ namespace PhotoMap.Context.Migrations.PgSql.Migrations
                     b.ToTable("point_categories", (string)null);
                 });
 
+            modelBuilder.Entity("PhotoMap.Context.Entities.Subscriber", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("Uid")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Uid")
+                        .IsUnique();
+
+                    b.ToTable("subscribers", (string)null);
+                });
+
             modelBuilder.Entity("PhotoMap.Context.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")

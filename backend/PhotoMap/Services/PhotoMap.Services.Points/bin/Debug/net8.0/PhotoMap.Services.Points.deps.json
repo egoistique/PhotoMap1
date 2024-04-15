@@ -10,7 +10,8 @@
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
           "PhotoMap.Context": "1.0.0",
-          "PhotoMap.Services.Actions": "1.0.0"
+          "PhotoMap.Services.Actions": "1.0.0",
+          "PhotoMap.Services.Mailing": "1.0.0"
         },
         "runtime": {
           "PhotoMap.Services.Points.dll": {}
@@ -918,6 +919,15 @@
           "PhotoMap.Services.Actions.dll": {}
         }
       },
+      "PhotoMap.Services.Mailing/1.0.0": {
+        "dependencies": {
+          "PhotoMap.Common": "1.0.0",
+          "PhotoMap.Context": "1.0.0"
+        },
+        "runtime": {
+          "PhotoMap.Services.Mailing.dll": {}
+        }
+      },
       "PhotoMap.Services.RabbitMq/1.0.0": {
         "dependencies": {
           "PhotoMap.Common": "1.0.0",
@@ -1625,6 +1635,11 @@
       "sha512": ""
     },
     "PhotoMap.Services.Actions/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PhotoMap.Services.Mailing/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

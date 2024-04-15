@@ -18,6 +18,7 @@
     <ProjectReference Include="..\..\..\Services\PhotoMap.Services.Feedbacks\PhotoMap.Services.Feedbacks.csproj" />
     <ProjectReference Include="..\..\..\Services\PhotoMap.Services.ImagePathes\PhotoMap.Services.ImagePathes.csproj" />
     <ProjectReference Include="..\..\..\Services\PhotoMap.Services.Logger\PhotoMap.Services.Logger.csproj" />
+    <ProjectReference Include="..\..\..\Services\PhotoMap.Services.Mailing\PhotoMap.Services.Mailing.csproj" />
     <ProjectReference Include="..\..\..\Services\PhotoMap.Services.PointCategories\PhotoMap.Services.PointCategories.csproj" />
     <ProjectReference Include="..\..\..\Services\PhotoMap.Services.Points\PhotoMap.Services.Points.csproj" />
     <ProjectReference Include="..\..\..\Services\PhotoMap.Services.RabbitMq\PhotoMap.Services.RabbitMq.csproj" />

@@ -1,0 +1,132 @@
+
+.dark-theme {
+  background-color: #333;
+  color: #fff;
+}
+
+.dark-theme .settings-box {
+  border-color: #666;
+  background-color: #444;
+}
+
+.dark-theme .setting-label {
+  color: #fff;
+}
+
+.dark-theme .toggle-switch .slider {
+  background-color: #666;
+}
+
+.dark-theme .toggle-switch input:checked + .slider {
+  background-color: #2196F3; /* или любой другой цвет для переключенного состояния */
+}
+
+  .setting {
+    max-width: 600px;
+    max-height: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    display: flex; /* Добавляем flex-контейнер */
+    align-items: center; /* Выравнивание элементов по вертикали */
+    flex-direction: column; /* Располагаем элементы вертикально */
+  }
+  
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  .setting {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .setting-label {
+    align-self: flex-start; /* Выравнивание названия настроек по левому краю */
+  }
+  
+  .toggle-switch {
+    margin-left: auto; /* Размещение переключателя справа от названия настройки */
+  }
+  
+  .settings-container {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 125px; /* Расположение контейнера на 300 пикселей ниже верха экрана */
+    left: 50%; /* Расположение контейнера по центру оси X */
+    transform: translateX(-50%); /* Центрирование контейнера по оси X */
+  }
+  
+  .settings-box {
+    width: 600px; /* Ширина контейнера настроек */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  

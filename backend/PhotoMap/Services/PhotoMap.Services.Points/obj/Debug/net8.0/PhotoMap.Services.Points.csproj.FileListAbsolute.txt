@@ -24,3 +24,5 @@ S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.P
 S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Points\bin\Debug\net8.0\PhotoMap.Services.RabbitMq.dll
 S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Points\bin\Debug\net8.0\PhotoMap.Services.Actions.pdb
 S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Points\bin\Debug\net8.0\PhotoMap.Services.RabbitMq.pdb
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Points\bin\Debug\net8.0\PhotoMap.Services.Mailing.dll
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Points\bin\Debug\net8.0\PhotoMap.Services.Mailing.pdb

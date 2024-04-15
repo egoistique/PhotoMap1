@@ -64,6 +64,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoMap.Services.UserAccou
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoMap.Identity", "Systems\Identity\PhotoMap.Identity\PhotoMap.Identity.csproj", "{C1C3250C-D1A6-471F-95FD-A7666F2D09C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoMap.Services.Mailing", "Services\PhotoMap.Services.Mailing\PhotoMap.Services.Mailing.csproj", "{401BBA97-04F5-4ABE-9215-5103719C9A04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -142,6 +144,10 @@ Global
 		{C1C3250C-D1A6-471F-95FD-A7666F2D09C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1C3250C-D1A6-471F-95FD-A7666F2D09C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1C3250C-D1A6-471F-95FD-A7666F2D09C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{401BBA97-04F5-4ABE-9215-5103719C9A04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{401BBA97-04F5-4ABE-9215-5103719C9A04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{401BBA97-04F5-4ABE-9215-5103719C9A04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{401BBA97-04F5-4ABE-9215-5103719C9A04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -169,6 +175,7 @@ Global
 		{80CD9FF3-AF75-4EC8-8243-22A011A0D41D} = {6D070B94-9962-4757-BB28-F44BFDA599C6}
 		{B3B9AF1B-E5DD-4BDE-8961-99E48470BDC4} = {F04D524C-E27F-4922-8C33-836CE2EC6209}
 		{C1C3250C-D1A6-471F-95FD-A7666F2D09C0} = {5218330C-D96F-45F3-B866-F2419474B530}
+		{401BBA97-04F5-4ABE-9215-5103719C9A04} = {F04D524C-E27F-4922-8C33-836CE2EC6209}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6747F111-D959-48DA-92F6-B035D6383FD8}

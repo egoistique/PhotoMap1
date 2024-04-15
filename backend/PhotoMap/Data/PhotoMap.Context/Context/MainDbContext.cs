@@ -11,6 +11,7 @@ public class MainDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
     public DbSet<Feedback> Feedbacks { get; set; }
     public DbSet<ImagePath> ImagePathes { get; set; }
     public DbSet<Point> Points { get; set; }
+    public DbSet<Subscriber> Subscribers { get; set; }
 
     public MainDbContext(DbContextOptions<MainDbContext> options) : base(options) { }
 
@@ -22,6 +23,7 @@ public class MainDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
         modelBuilder.ConfigurePoints();
         modelBuilder.ConfigureFeedbacks();
         modelBuilder.ConfigureImagePathes();
+        modelBuilder.ConfigureSubscribers();
 
 
         modelBuilder.ConfigureUsers();

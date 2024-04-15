@@ -9,6 +9,7 @@ const Sidebar = ({ isOpen }) => {
       <Link to="/" className="sidebar-link">Dashboard</Link>
       <Link to="/routepage" className="sidebar-link">Route Page</Link>
       <Link to="/account" className="sidebar-link">Account</Link>
+      <Link to="/settings" className="sidebar-link">Settings</Link>
     </div>
   );
 };

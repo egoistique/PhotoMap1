@@ -2823,6 +2823,20 @@
           "bin/placeholder/PhotoMap.Services.Logger.dll": {}
         }
       },
+      "PhotoMap.Services.Mailing/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "PhotoMap.Common": "1.0.0",
+          "PhotoMap.Context": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PhotoMap.Services.Mailing.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PhotoMap.Services.Mailing.dll": {}
+        }
+      },
       "PhotoMap.Services.PointCategories/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -2843,7 +2857,8 @@
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
           "PhotoMap.Context": "1.0.0",
-          "PhotoMap.Services.Actions": "1.0.0"
+          "PhotoMap.Services.Actions": "1.0.0",
+          "PhotoMap.Services.Mailing": "1.0.0"
         },
         "compile": {
           "bin/placeholder/PhotoMap.Services.Points.dll": {}
@@ -7221,6 +7236,11 @@
       "path": "../../../Services/PhotoMap.Services.Logger/PhotoMap.Services.Logger.csproj",
       "msbuildProject": "../../../Services/PhotoMap.Services.Logger/PhotoMap.Services.Logger.csproj"
     },
+    "PhotoMap.Services.Mailing/1.0.0": {
+      "type": "project",
+      "path": "../../../Services/PhotoMap.Services.Mailing/PhotoMap.Services.Mailing.csproj",
+      "msbuildProject": "../../../Services/PhotoMap.Services.Mailing/PhotoMap.Services.Mailing.csproj"
+    },
     "PhotoMap.Services.PointCategories/1.0.0": {
       "type": "project",
       "path": "../../../Services/PhotoMap.Services.PointCategories/PhotoMap.Services.PointCategories.csproj",
@@ -7263,6 +7283,7 @@
       "PhotoMap.Services.Feedbacks >= 1.0.0",
       "PhotoMap.Services.ImagePathes >= 1.0.0",
       "PhotoMap.Services.Logger >= 1.0.0",
+      "PhotoMap.Services.Mailing >= 1.0.0",
       "PhotoMap.Services.PointCategories >= 1.0.0",
       "PhotoMap.Services.Points >= 1.0.0",
       "PhotoMap.Services.RabbitMq >= 1.0.0",
@@ -7332,6 +7353,9 @@
             },
             "S:\\dsr course .net\\PhotoMapProject\\backend\\PhotoMap\\Services\\PhotoMap.Services.Logger\\PhotoMap.Services.Logger.csproj": {
               "projectPath": "S:\\dsr course .net\\PhotoMapProject\\backend\\PhotoMap\\Services\\PhotoMap.Services.Logger\\PhotoMap.Services.Logger.csproj"
+            },
+            "S:\\dsr course .net\\PhotoMapProject\\backend\\PhotoMap\\Services\\PhotoMap.Services.Mailing\\PhotoMap.Services.Mailing.csproj": {
+              "projectPath": "S:\\dsr course .net\\PhotoMapProject\\backend\\PhotoMap\\Services\\PhotoMap.Services.Mailing\\PhotoMap.Services.Mailing.csproj"
             },
             "S:\\dsr course .net\\PhotoMapProject\\backend\\PhotoMap\\Services\\PhotoMap.Services.PointCategories\\PhotoMap.Services.PointCategories.csproj": {
               "projectPath": "S:\\dsr course .net\\PhotoMapProject\\backend\\PhotoMap\\Services\\PhotoMap.Services.PointCategories\\PhotoMap.Services.PointCategories.csproj"

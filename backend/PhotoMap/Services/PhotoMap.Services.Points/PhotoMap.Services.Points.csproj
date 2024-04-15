@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\PhotoMap.Context\PhotoMap.Context.csproj" />
     <ProjectReference Include="..\PhotoMap.Services.Actions\PhotoMap.Services.Actions.csproj" />
+    <ProjectReference Include="..\PhotoMap.Services.Mailing\PhotoMap.Services.Mailing.csproj" />
   </ItemGroup>
 
   <ItemGroup>
