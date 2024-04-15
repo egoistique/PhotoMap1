@@ -1,0 +1,47 @@
+version: '3.4'
+
+services:
+
+  photomap_postgresql:
+    image: postgres:14.1
+    
+  photomap_rabbitmq:
+    image: rabbitmq:management
+            
+  photomap_api:
+    image: ${DOCKER_REGISTRY-}photomapapi
+    build:
+      context: .
+      dockerfile: Systems/Api/PhotoMap.Api/Dockerfile
+    depends_on:
+      - photomap_postgresql
+      - photomap_rabbitmq
+
+  photomap_identity:
+    image: ${DOCKER_REGISTRY-}photomapidentity
+    build:
+      context: .
+      dockerfile: Systems/Identity/PhotoMap.Identity/Dockerfile
+    depends_on:
+      - photomap_postgresql
+      - photomap_api
+
+  photomap_worker_1:
+    image: ${DOCKER_REGISTRY-}photomapworker
+    build:
+      context: .
+      dockerfile: Systems/Worker/PhotoMap.Worker/Dockerfile
+    depends_on:
+      - photomap_postgresql
+      - photomap_rabbitmq
+      - photomap_api
+
+  # photomap_worker_2:
+  #   image: ${DOCKER_REGISTRY-}photomapworker
+  #   build:
+  #     context: .
+  #     dockerfile: Systems/Worker/PhotoMap.Worker/Dockerfile
+  #   depends_on:
+  #     - photomap_postgresql
+  #     - photomap_rabbitmq
+  #     - photomap_api 

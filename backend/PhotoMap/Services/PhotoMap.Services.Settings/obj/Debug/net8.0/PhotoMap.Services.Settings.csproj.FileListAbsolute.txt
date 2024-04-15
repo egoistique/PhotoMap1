@@ -1,0 +1,16 @@
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Settings\bin\Debug\net8.0\PhotoMap.Services.Settings.deps.json
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Settings\bin\Debug\net8.0\PhotoMap.Services.Settings.dll
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Settings\bin\Debug\net8.0\PhotoMap.Services.Settings.pdb
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Settings\bin\Debug\net8.0\PhotoMap.Common.dll
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Settings\bin\Debug\net8.0\PhotoMap.Common.pdb
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Settings\obj\Debug\net8.0\PhotoMap.Services.Settings.csproj.AssemblyReference.cache
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Settings\obj\Debug\net8.0\PhotoMap.Services.Settings.GeneratedMSBuildEditorConfig.editorconfig
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Settings\obj\Debug\net8.0\PhotoMap.Services.Settings.AssemblyInfoInputs.cache
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Settings\obj\Debug\net8.0\PhotoMap.Services.Settings.AssemblyInfo.cs
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Settings\obj\Debug\net8.0\PhotoMap.Services.Settings.csproj.CoreCompileInputs.cache
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Settings\obj\Debug\net8.0\PhotoMap.Services.Settings.sourcelink.json
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Settings\obj\Debug\net8.0\PhotoMap.Services.Settings.csproj.CopyComplete
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Settings\obj\Debug\net8.0\PhotoMap.Services.Settings.dll
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Settings\obj\Debug\net8.0\refint\PhotoMap.Services.Settings.dll
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Settings\obj\Debug\net8.0\PhotoMap.Services.Settings.pdb
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Settings\obj\Debug\net8.0\ref\PhotoMap.Services.Settings.dll

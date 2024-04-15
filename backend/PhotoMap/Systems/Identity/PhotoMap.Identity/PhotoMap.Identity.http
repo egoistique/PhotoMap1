@@ -1,0 +1,6 @@
+@PhotoMap.Identity_HostAddress = http://localhost:5064
+
+GET {{PhotoMap.Identity_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

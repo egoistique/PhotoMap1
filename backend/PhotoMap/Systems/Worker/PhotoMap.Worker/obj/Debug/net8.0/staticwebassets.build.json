@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "1EAkNGzyjuJKXsDW+p8WWPQ7HOgGCCM/f4BXez4zfBs=",
+  "Source": "PhotoMap.Worker",
+  "BasePath": "_content/PhotoMap.Worker",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>4892d8be-4536-4cbb-9772-779266d1a48f</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Data\PhotoMap.Context.Entities\PhotoMap.Context.Entities.csproj" />
+    <ProjectReference Include="..\..\..\Data\PhotoMap.Context.Migrations\PhotoMap.Context.Migrations.PgSql\PhotoMap.Context.Migrations.PgSql.csproj" />
+    <ProjectReference Include="..\..\..\Data\PhotoMap.Context.Seeder\PhotoMap.Context.Seeder.csproj" />
+    <ProjectReference Include="..\..\..\Data\PhotoMap.Context\PhotoMap.Context.csproj" />
+    <ProjectReference Include="..\..\..\Services\PhotoMap.Services.Actions\PhotoMap.Services.Actions.csproj" />
+    <ProjectReference Include="..\..\..\Services\PhotoMap.Services.Feedbacks\PhotoMap.Services.Feedbacks.csproj" />
+    <ProjectReference Include="..\..\..\Services\PhotoMap.Services.ImagePathes\PhotoMap.Services.ImagePathes.csproj" />
+    <ProjectReference Include="..\..\..\Services\PhotoMap.Services.Logger\PhotoMap.Services.Logger.csproj" />
+    <ProjectReference Include="..\..\..\Services\PhotoMap.Services.PointCategories\PhotoMap.Services.PointCategories.csproj" />
+    <ProjectReference Include="..\..\..\Services\PhotoMap.Services.Points\PhotoMap.Services.Points.csproj" />
+    <ProjectReference Include="..\..\..\Services\PhotoMap.Services.RabbitMq\PhotoMap.Services.RabbitMq.csproj" />
+    <ProjectReference Include="..\..\..\Services\PhotoMap.Services.Settings\PhotoMap.Services.Settings.csproj" />
+    <ProjectReference Include="..\..\..\Services\PhotoMap.Services.UserAccount\PhotoMap.Services.UserAccount.csproj" />
+    <ProjectReference Include="..\..\..\Shared\PhotoMap.Common\PhotoMap.Common.csproj" />
+    <ProjectReference Include="..\PhotoMap.Api.Settings\PhotoMap.Api.Settings.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="7.1.0" />
+    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
+    <PackageReference Include="Serilog" Version="3.1.1" />
+    <PackageReference Include="Serilog.Enrichers.CorrelationId" Version="3.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.12" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.5.0" />
+  </ItemGroup>
+
+</Project>

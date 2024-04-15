@@ -1,0 +1,16 @@
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.RabbitMq\bin\Debug\net8.0\PhotoMap.Services.RabbitMq.deps.json
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.RabbitMq\bin\Debug\net8.0\PhotoMap.Services.RabbitMq.dll
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.RabbitMq\bin\Debug\net8.0\PhotoMap.Services.RabbitMq.pdb
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.RabbitMq\bin\Debug\net8.0\PhotoMap.Common.dll
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.RabbitMq\bin\Debug\net8.0\PhotoMap.Common.pdb
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.RabbitMq\obj\Debug\net8.0\PhotoMap.Services.RabbitMq.csproj.AssemblyReference.cache
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.RabbitMq\obj\Debug\net8.0\PhotoMap.Services.RabbitMq.GeneratedMSBuildEditorConfig.editorconfig
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.RabbitMq\obj\Debug\net8.0\PhotoMap.Services.RabbitMq.AssemblyInfoInputs.cache
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.RabbitMq\obj\Debug\net8.0\PhotoMap.Services.RabbitMq.AssemblyInfo.cs
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.RabbitMq\obj\Debug\net8.0\PhotoMap.Services.RabbitMq.csproj.CoreCompileInputs.cache
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.RabbitMq\obj\Debug\net8.0\PhotoMap.Services.RabbitMq.sourcelink.json
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.RabbitMq\obj\Debug\net8.0\PhotoMap.Services.RabbitMq.csproj.CopyComplete
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.RabbitMq\obj\Debug\net8.0\PhotoMap.Services.RabbitMq.dll
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.RabbitMq\obj\Debug\net8.0\refint\PhotoMap.Services.RabbitMq.dll
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.RabbitMq\obj\Debug\net8.0\PhotoMap.Services.RabbitMq.pdb
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.RabbitMq\obj\Debug\net8.0\ref\PhotoMap.Services.RabbitMq.dll

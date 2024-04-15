@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../css/LoginForm.css';
-import RegisterForm from './RegisterForm'; // Импортируем компонент формы регистрации
 
 const Modal = ({ onClose, onLogin }) => {
   const [formData, setFormData] = useState({
@@ -10,7 +9,6 @@ const Modal = ({ onClose, onLogin }) => {
   });
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
-  const [showRegisterForm, setShowRegisterForm] = useState(false); // Состояние для отображения формы регистрации
 
   const handleChange = (e) => {
     setFormData({
@@ -38,12 +36,11 @@ const Modal = ({ onClose, onLogin }) => {
       setErrorMessage('');
 
       // В data будет содержаться ответ от сервера, включая JWT токен и информацию о пользователе
-
+      console.log('JWT token:', data.access_token);
       console.log('User email:', formData.username);
-      console.log('password:', formData.password);
       
       // Здесь можно сохранить токен и информацию о пользователе в localStorage или состоянии приложения для последующего использования
-     
+      localStorage.setItem('token', data.access_token);
       localStorage.setItem('email', formData.username);
       localStorage.setItem('password', formData.password);
 
@@ -59,10 +56,6 @@ const Modal = ({ onClose, onLogin }) => {
       setErrorMessage('Authentication failed. Please check your credentials.');
       setSuccessMessage('');
     }
-  };
-
-  const handleRegisterClick = () => {
-    setShowRegisterForm(true); // Открываем форму регистрации при клике на ссылку
   };
 
   return (
@@ -82,11 +75,7 @@ const Modal = ({ onClose, onLogin }) => {
           </label>
           <button type="submit">Login</button>
         </form>
-        {/* При клике на ссылку "Зарегистрироваться" открываем форму регистрации */}
-        <p>Не зарегистрированы? <a href="#" onClick={handleRegisterClick}>Зарегистрироваться</a></p>
       </div>
-      {/* Если showRegisterForm равно true, отображаем форму регистрации */}
-      {showRegisterForm && <RegisterForm onClose={() => setShowRegisterForm(false)} />}
     </div>
   );
 };

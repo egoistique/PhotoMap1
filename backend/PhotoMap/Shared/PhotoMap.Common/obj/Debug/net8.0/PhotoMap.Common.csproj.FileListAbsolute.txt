@@ -1,0 +1,13 @@
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Shared\PhotoMap.Common\bin\Debug\net8.0\PhotoMap.Common.deps.json
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Shared\PhotoMap.Common\bin\Debug\net8.0\PhotoMap.Common.dll
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Shared\PhotoMap.Common\bin\Debug\net8.0\PhotoMap.Common.pdb
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Shared\PhotoMap.Common\obj\Debug\net8.0\PhotoMap.Common.csproj.AssemblyReference.cache
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Shared\PhotoMap.Common\obj\Debug\net8.0\PhotoMap.Common.GeneratedMSBuildEditorConfig.editorconfig
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Shared\PhotoMap.Common\obj\Debug\net8.0\PhotoMap.Common.AssemblyInfoInputs.cache
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Shared\PhotoMap.Common\obj\Debug\net8.0\PhotoMap.Common.AssemblyInfo.cs
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Shared\PhotoMap.Common\obj\Debug\net8.0\PhotoMap.Common.csproj.CoreCompileInputs.cache
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Shared\PhotoMap.Common\obj\Debug\net8.0\PhotoMap.Common.sourcelink.json
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Shared\PhotoMap.Common\obj\Debug\net8.0\PhotoMap.Common.dll
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Shared\PhotoMap.Common\obj\Debug\net8.0\refint\PhotoMap.Common.dll
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Shared\PhotoMap.Common\obj\Debug\net8.0\PhotoMap.Common.pdb
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Shared\PhotoMap.Common\obj\Debug\net8.0\ref\PhotoMap.Common.dll

@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <UserSecretsId>a01cb5d4-e738-4964-9473-b3a6d2894e65</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.0" />
+    <PackageReference Include="Serilog.Enrichers.CorrelationId" Version="3.0.1" />
+    <PackageReference Include="Serilog.Expressions" Version="4.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Services\PhotoMap.Services.Actions\PhotoMap.Services.Actions.csproj" />
+    <ProjectReference Include="..\..\..\Services\PhotoMap.Services.Logger\PhotoMap.Services.Logger.csproj" />
+    <ProjectReference Include="..\..\..\Services\PhotoMap.Services.RabbitMq\PhotoMap.Services.RabbitMq.csproj" />
+    <ProjectReference Include="..\..\..\Services\PhotoMap.Services.Settings\PhotoMap.Services.Settings.csproj" />
+    <ProjectReference Include="..\..\..\Shared\PhotoMap.Common\PhotoMap.Common.csproj" />
+  </ItemGroup>
+
+</Project>

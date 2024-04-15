@@ -1,0 +1,6 @@
+@PhotoMap.Worker_HostAddress = http://localhost:5223
+
+GET {{PhotoMap.Worker_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

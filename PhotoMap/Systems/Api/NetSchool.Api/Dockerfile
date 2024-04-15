@@ -17,6 +17,7 @@ COPY ["Data/NetSchool.Context.Entities/NetSchool.Context.Entities.csproj", "Data
 COPY ["Data/NetSchool.Context.Seeder/NetSchool.Context.Seeder.csproj", "Data/NetSchool.Context.Seeder/"]
 COPY ["Services/NetSchool.Services.UserAccount/NetSchool.Services.UserAccount.csproj", "Services/NetSchool.Services.UserAccount/"]
 COPY ["NetSchool.Services.Feedbacks/NetSchool.Services.Feedbacks.csproj", "NetSchool.Services.Feedbacks/"]
+COPY ["NetSchool.Services.ImagePathes/NetSchool.Services.ImagePathes.csproj", "NetSchool.Services.ImagePathes/"]
 COPY ["Services/NetSchool.Services.Actions/NetSchool.Services.Actions.csproj", "Services/NetSchool.Services.Actions/"]
 COPY ["Services/NetSchool.Services.RabbitMq/NetSchool.Services.RabbitMq.csproj", "Services/NetSchool.Services.RabbitMq/"]
 COPY ["Services/NetSchool.Services.Logger/NetSchool.Services.Logger.csproj", "Services/NetSchool.Services.Logger/"]

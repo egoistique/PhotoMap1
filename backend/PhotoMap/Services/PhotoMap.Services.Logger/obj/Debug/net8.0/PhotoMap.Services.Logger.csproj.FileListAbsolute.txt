@@ -1,0 +1,13 @@
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Logger\bin\Debug\net8.0\PhotoMap.Services.Logger.deps.json
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Logger\bin\Debug\net8.0\PhotoMap.Services.Logger.dll
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Logger\bin\Debug\net8.0\PhotoMap.Services.Logger.pdb
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Logger\obj\Debug\net8.0\PhotoMap.Services.Logger.csproj.AssemblyReference.cache
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Logger\obj\Debug\net8.0\PhotoMap.Services.Logger.GeneratedMSBuildEditorConfig.editorconfig
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Logger\obj\Debug\net8.0\PhotoMap.Services.Logger.AssemblyInfoInputs.cache
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Logger\obj\Debug\net8.0\PhotoMap.Services.Logger.AssemblyInfo.cs
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Logger\obj\Debug\net8.0\PhotoMap.Services.Logger.csproj.CoreCompileInputs.cache
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Logger\obj\Debug\net8.0\PhotoMap.Services.Logger.sourcelink.json
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Logger\obj\Debug\net8.0\PhotoMap.Services.Logger.dll
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Logger\obj\Debug\net8.0\refint\PhotoMap.Services.Logger.dll
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Logger\obj\Debug\net8.0\PhotoMap.Services.Logger.pdb
+S:\dsr course .net\PhotoMapProject\backend\PhotoMap\Services\PhotoMap.Services.Logger\obj\Debug\net8.0\ref\PhotoMap.Services.Logger.dll
