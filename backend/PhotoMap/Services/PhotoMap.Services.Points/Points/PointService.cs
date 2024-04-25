@@ -93,14 +93,14 @@ public class PointService : IPointService
 
         await context.SaveChangesAsync();
 
-        await action.PublicatePoint(new PublicatePointModel()
-        {
-            Id = point.Id,
-            Title = point.Title,
-            //Latitude = point.Latitude,
-            //Longitude = point.Longitude,
-            Description = point.Description
-        });
+        //await action.PublicatePoint(new PublicatePointModel()
+        //{
+        //    Id = point.Id,
+        //    Title = point.Title,
+        //    //Latitude = point.Latitude,
+        //    //Longitude = point.Longitude,
+        //    Description = point.Description
+        //});
 
         await mailingService.DoMailing(model.Title);
 
