@@ -13,15 +13,15 @@ services:
     volumes:      
       - ~/.docker-conf/postgresql/data/:/var/lib/postgresql/data
 
-  photomap_rabbitmq:
-    ports:
-      - "5672:5672"
-      - "5673:5673"
-      - "15672:15672" 
-    networks:
-      - shared_photomap_net
-    volumes:      
-      - ./rabbitmq:/var/lib/rabbitmq
+  # photomap_rabbitmq:
+  #   ports:
+  #     - "5672:5672"
+  #     - "5673:5673"
+  #     - "15672:15672" 
+  #   networks:
+  #     - shared_photomap_net
+  #   volumes:      
+  #     - ./rabbitmq:/var/lib/rabbitmq
     
 
   photomap_api:

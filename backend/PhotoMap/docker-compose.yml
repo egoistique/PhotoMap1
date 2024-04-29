@@ -5,8 +5,8 @@ services:
   photomap_postgresql:
     image: postgres:14.1
     
-  photomap_rabbitmq:
-    image: rabbitmq:management
+  # photomap_rabbitmq:
+  #   image: rabbitmq:management
             
   photomap_api:
     image: ${DOCKER_REGISTRY-}photomapapi
@@ -15,7 +15,7 @@ services:
       dockerfile: Systems/Api/PhotoMap.Api/Dockerfile
     depends_on:
       - photomap_postgresql
-      - photomap_rabbitmq
+      #- photomap_rabbitmq
 
   photomap_identity:
     image: ${DOCKER_REGISTRY-}photomapidentity
