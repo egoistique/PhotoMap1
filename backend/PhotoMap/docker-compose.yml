@@ -26,15 +26,15 @@ services:
       - photomap_postgresql
       - photomap_api
 
-  photomap_worker_1:
-    image: ${DOCKER_REGISTRY-}photomapworker
-    build:
-      context: .
-      dockerfile: Systems/Worker/PhotoMap.Worker/Dockerfile
-    depends_on:
-      - photomap_postgresql
-      - photomap_rabbitmq
-      - photomap_api
+  # photomap_worker_1:
+  #   image: ${DOCKER_REGISTRY-}photomapworker
+  #   build:
+  #     context: .
+  #     dockerfile: Systems/Worker/PhotoMap.Worker/Dockerfile
+  #   depends_on:
+  #     - photomap_postgresql
+  #     - photomap_rabbitmq
+  #     - photomap_api
 
   # photomap_worker_2:
   #   image: ${DOCKER_REGISTRY-}photomapworker

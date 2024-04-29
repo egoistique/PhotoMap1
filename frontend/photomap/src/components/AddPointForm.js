@@ -17,7 +17,7 @@ const AddPointForm = ({ onAdd, onClose, latitude, longitude  }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch('https://localhost:7089/v1/PointCategory');
+        const response = await fetch('http://localhost:10000/v1/PointCategory');
         if (!response.ok) {
           throw new Error('Failed to fetch categories');
         }
@@ -49,7 +49,7 @@ const AddPointForm = ({ onAdd, onClose, latitude, longitude  }) => {
     e.preventDefault();
     // Добавляем точку на бэкенд
     try {
-      const response = await fetch('https://localhost:7089/v1/Point', {
+      const response = await fetch('http://localhost:10000/v1/Point', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

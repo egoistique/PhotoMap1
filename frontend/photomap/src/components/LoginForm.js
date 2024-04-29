@@ -23,7 +23,7 @@ const Modal = ({ onClose, onLogin }) => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        'http://localhost:5027/connect/token',
+        'http://localhost:10001/connect/token',
         `grant_type=password&username=${formData.username}&password=${formData.password}&scope=points_read points_write`,
         {
           headers: {

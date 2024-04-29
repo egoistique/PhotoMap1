@@ -44,6 +44,8 @@ public static class DbSeeder
         if (await context.Points.AnyAsync())
             return;
 
+        await context.PointCategories.AddRangeAsync(new DemoHelper().GetPointCategories);
+
         await context.Points.AddRangeAsync(new DemoHelper().GetPoints);
 
         await context.SaveChangesAsync();

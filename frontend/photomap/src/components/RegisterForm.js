@@ -27,7 +27,7 @@ const RegisterForm = ({ onClose }) => {
 
     try {
       const { data } = await axios.post(
-        `https://localhost:7089/v1/Accounts?name=${formData.name}&email=${formData.email}&password=${formData.password}`
+        `http://localhost:10000/v1/Accounts?name=${formData.name}&email=${formData.email}&password=${formData.password}`
       );
 
       setErrorMessage('');

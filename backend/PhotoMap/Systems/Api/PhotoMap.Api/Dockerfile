@@ -22,6 +22,7 @@ COPY ["Services/PhotoMap.Services.RabbitMq/PhotoMap.Services.RabbitMq.csproj", "
 COPY ["Services/PhotoMap.Services.Feedbacks/PhotoMap.Services.Feedbacks.csproj", "Services/PhotoMap.Services.Feedbacks/"]
 COPY ["Services/PhotoMap.Services.ImagePathes/PhotoMap.Services.ImagePathes.csproj", "Services/PhotoMap.Services.ImagePathes/"]
 COPY ["Services/PhotoMap.Services.Logger/PhotoMap.Services.Logger.csproj", "Services/PhotoMap.Services.Logger/"]
+COPY ["Services/PhotoMap.Services.Mailing/PhotoMap.Services.Mailing.csproj", "Services/PhotoMap.Services.Mailing/"]
 COPY ["Services/PhotoMap.Services.PointCategories/PhotoMap.Services.PointCategories.csproj", "Services/PhotoMap.Services.PointCategories/"]
 COPY ["Services/PhotoMap.Services.Points/PhotoMap.Services.Points.csproj", "Services/PhotoMap.Services.Points/"]
 COPY ["Systems/Api/PhotoMap.Api.Settings/PhotoMap.Api.Settings.csproj", "Systems/Api/PhotoMap.Api.Settings/"]

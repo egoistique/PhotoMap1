@@ -40,7 +40,7 @@ const Settings = () => {
     // Если уведомления включены, выполняем запрос к бекенду
     if (!notifyNewPoints) {
       try {
-        const response = await fetch('https://localhost:7089/v1/Subscriber', {
+        const response = await fetch('http://localhost:10000/v1/Subscriber', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -62,7 +62,7 @@ const Settings = () => {
       }
     }else {
       try {
-        const response = await fetch(`https://localhost:7089/v1/Subscriber/${encodeURIComponent(email)}`, {
+        const response = await fetch(`http://localhost:10000/v1/Subscriber/${encodeURIComponent(email)}`, {
           method: 'DELETE',
           headers: {
             'Accept': '*/*'
