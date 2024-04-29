@@ -31,7 +31,7 @@ export const fetchPoints = async (category = null) => {
   
   export const fetchPointsBySearch = async (query) => {
     try {
-        const url = `http://localhost:10000v1/Point/search?query=${encodeURIComponent(query)}`;
+        const url = `http://localhost:10000/v1/Point/search?query=${encodeURIComponent(query)}`;
         const response = await fetch(url, {
             headers: {
                 'Authorization': 'Bearer YOUR_ACCESS_TOKEN_HERE',
