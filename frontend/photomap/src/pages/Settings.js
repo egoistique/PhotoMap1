@@ -26,6 +26,13 @@ const Settings = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const savedNotifyNewPoints = JSON.parse(localStorage.getItem('notifyNewPoints'));
+    if (savedNotifyNewPoints !== null) {
+      setNotifyNewPoints(savedNotifyNewPoints);
+    }
+  }, []);
+
   const handleDarkThemeChange = () => {
     const newTheme = !darkTheme;
     setDarkTheme(newTheme);
@@ -36,7 +43,7 @@ const Settings = () => {
   const handleNotifyNewPointsChange = async () => {
     // Изменяем состояние настройки уведомлений
     setNotifyNewPoints(!notifyNewPoints);
-
+    localStorage.setItem('notifyNewPoints', JSON.stringify(!notifyNewPoints));
     // Если уведомления включены, выполняем запрос к бекенду
     if (!notifyNewPoints) {
       try {
@@ -58,7 +65,7 @@ const Settings = () => {
         console.log('Subscribed successfully for new points notifications');
       } catch (error) {
         console.error('Error subscribing for new points notifications:', error.message);
-        // Возможно, здесь стоит добавить логику для обработки ошибки
+        
       }
     }else {
       try {
@@ -76,7 +83,7 @@ const Settings = () => {
         console.log('Unsubscribed successfully from new points notifications');
       } catch (error) {
         console.error('Error unsubscribing from new points notifications:', error.message);
-        // Возможно, здесь стоит добавить логику для обработки ошибки
+        
       }
     }
   };
